@@ -10,7 +10,7 @@ const HeaderDepartment = () => {
     const [open, setOpen] = React.useState<boolean>(false);
     return (
         <Grid sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="h3">Department</Typography>
+            <Typography sx={{color:"#00695c"}} variant="h3">Department</Typography>
             <IconButton onClick={handleClick}>
                 <AddCircleIcon />
             </IconButton>

@@ -5,12 +5,10 @@ import { SidebarContext } from 'src/contexts/SidebarContext';
 import {
   Box,
   Drawer,
-  alpha,
   styled,
   Divider,
   useTheme,
   Button,
-  lighten,
   darken,
 } from '@mui/material';
 
