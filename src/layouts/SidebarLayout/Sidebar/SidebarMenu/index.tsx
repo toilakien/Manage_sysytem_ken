@@ -1,5 +1,8 @@
 import { useContext } from 'react';
-import { GiWaterGallon } from "react-icons/gi";
+import { GiWaterGallon } from 'react-icons/gi';
+import HelpIcon from '@mui/icons-material/Help';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import HotTubIcon from '@mui/icons-material/HotTub';
 import {
   ListSubheader,
   alpha,
@@ -127,9 +130,9 @@ const SubMenuWrapper = styled(Box)(
                 background: ${theme.colors.alpha.trueWhite[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
-    'transform',
-    'opacity'
-  ])};
+                  'transform',
+                  'opacity'
+                ])};
                 width: 6px;
                 height: 6px;
                 transform: scale(0);
@@ -160,7 +163,7 @@ function SidebarMenu() {
   return (
     <>
       <MenuWrapper>
-      <List
+        <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
@@ -200,9 +203,54 @@ function SidebarMenu() {
                   component={RouterLink}
                   onClick={closeSidebar}
                   to="/department"
-                  startIcon={<GiWaterGallon />}
+                  startIcon={<HotTubIcon />}
                 >
                   Department
+                </Button>
+              </ListItem>
+            </List>
+          </SubMenuWrapper>
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  onClick={closeSidebar}
+                  to="/language"
+                  startIcon={<GiWaterGallon />}
+                >
+                  Language
+                </Button>
+              </ListItem>
+            </List>
+          </SubMenuWrapper>
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  onClick={closeSidebar}
+                  to="/ranks"
+                  startIcon={<MilitaryTechIcon />}
+                >
+                  Ranks
+                </Button>
+              </ListItem>
+            </List>
+          </SubMenuWrapper>
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  onClick={closeSidebar}
+                  to="/questions"
+                  startIcon={<HelpIcon />}
+                >
+                  Questions
                 </Button>
               </ListItem>
             </List>

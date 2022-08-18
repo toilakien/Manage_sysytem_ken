@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
 import { DepartmentStateProps, Payload } from 'src/types/department';
 import { dispatch } from '..';
-import { openSnackbar } from './snackbar';
 
 export const DEPARTMENT_URL = {
   getDepartmen: `${process.env.REACT_APP_API_URL}/v1/operator/department`,
@@ -41,6 +40,16 @@ const slice = createSlice({
       console.log(action.payload);
 
       state.department.filter((e) => e.id !== action.payload);
+    },
+    putDepartmentSuccess(state, action) {
+        const newState=state.department.map((e)=>{
+            if(e.id==action.payload.id){
+                e.name=action.payload.name;
+                e.code=action.payload.code;
+            }
+            return e;
+        })
+        state.department=[...newState];
     }
   }
 });
@@ -79,12 +88,16 @@ export function deleteDepartmentList(payload: any) {
       const resp = await axios.delete(
         `${DEPARTMENT_URL.delDepartment(payload)}`
       );
-      if(resp.status ===200 ){
-        dispatch(openSnackbar)
-      }
+
       dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success));
     } catch (error) {
       console.log(error);
     }
+  };
+}
+export function putDepartmentList(id: any) {
+  return async () => {
+    const resp=await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`);
+    dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
   };
 }

@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import { dispatch } from "src/store";
+import { dispatch, useSelector } from "src/store";
 import { postDepartmentList } from "src/store/slice/department";
 import * as yup from 'yup';
 interface Props {
@@ -22,9 +22,7 @@ const AddDepartment = (props: Props) => {
             code: '',
         },
         validationSchema,
-        onSubmit:  values => {
-            console.log(values);
-            
+        onSubmit:  values => {             
             dispatch(postDepartmentList(values));
             handleClose();
         }

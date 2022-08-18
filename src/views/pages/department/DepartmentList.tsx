@@ -11,11 +11,7 @@ import {
 // import apiDepartment from "./data";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditButton from '@mui/icons-material/Edit';
-import { dispatch } from 'src/store';
-import {
-  deleteDepartmentList,
-  getDepartmentList
-} from 'src/store/slice/department';
+
 import { useState } from 'react';
 import AlertDialog from './dialog';
 
