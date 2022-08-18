@@ -19,7 +19,8 @@ const initialState: DepartmentStateProps = {
   pageCount: 0,
   currentPage: 1,
   department: [],
-  error: []
+  error: [],
+
 };
 
 const slice = createSlice({
@@ -50,7 +51,8 @@ const slice = createSlice({
             return e;
         })
         state.department=[...newState];
-    }
+    },
+    
   }
 });
 export default slice.reducer;
@@ -95,9 +97,9 @@ export function deleteDepartmentList(payload: any) {
     }
   };
 }
-export function putDepartmentList(id: any) {
+export function putDepartmentList(id: any,params:any) {
   return async () => {
-    const resp=await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`);
+    const resp=await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`,params);
     dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
   };
 }

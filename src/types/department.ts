@@ -1,3 +1,4 @@
+import { UserProfile } from './login';
 // PROJECT IMPORTS
 
 export interface DepartmentStateProps {
@@ -5,6 +6,7 @@ export interface DepartmentStateProps {
     pageCount?: number;
     currentPage?: number;
     error?: DataError[];
+    detail?:UserProfile
   }
   export interface Payload {
     id?: string | number;
