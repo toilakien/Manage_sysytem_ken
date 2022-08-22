@@ -19,8 +19,7 @@ const initialState: DepartmentStateProps = {
   pageCount: 0,
   currentPage: 1,
   department: [],
-  error: [],
-
+  error: []
 };
 
 const slice = createSlice({
@@ -43,16 +42,14 @@ const slice = createSlice({
       state.department.filter((e) => e.id !== action.payload);
     },
     putDepartmentSuccess(state, action) {
-        const newState=state.department.map((e)=>{
-            if(e.id==action.payload.id){
-                e.name=action.payload.name;
-                e.code=action.payload.code;
-            }
-            return e;
-        })
-        state.department=[...newState];
-    },
-    
+      const newState = state.department.map((e) => {
+        if (e.id == action.payload.id) {
+          e = { ...action.payload };
+        }
+        return e;
+      });
+      state.department = [...newState];
+    }
   }
 });
 export default slice.reducer;
@@ -97,9 +94,11 @@ export function deleteDepartmentList(payload: any) {
     }
   };
 }
-export function putDepartmentList(id: any,params:any) {
+export function putDepartmentList(id: any, params: any) {
   return async () => {
-    const resp=await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`,params);
-    dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
+    const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
+    if (resp.status == 200 || resp.status == 201) {
+      dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
+    }
   };
 }

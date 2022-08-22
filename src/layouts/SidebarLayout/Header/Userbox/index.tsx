@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import {  NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import {
   Avatar,
@@ -19,7 +19,6 @@ import {
 import InboxTwoToneIcon from '@mui/icons-material/InboxTwoTone';
 import { styled } from '@mui/material/styles';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
-import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
 import useAuth from 'src/hooks/useAuth';
@@ -60,8 +59,8 @@ const UserBoxDescription = styled(Typography)(
 );
 
 function HeaderUserbox() {
-  const navigate=useNavigate();
-  const user=JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
   // const user = {
   //   name: 'Admin',
   //   avatar: '/static/images/avatars/1.jpg',
@@ -86,9 +85,7 @@ function HeaderUserbox() {
         <Hidden mdDown>
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
-            <UserBoxDescription variant="body2">
-              {user.name}
-            </UserBoxDescription>
+            <UserBoxDescription variant="body2">{user.name}</UserBoxDescription>
           </UserBoxText>
         </Hidden>
         <Hidden smDown>
@@ -119,19 +116,18 @@ function HeaderUserbox() {
         </MenuUserBox>
         <Divider sx={{ mb: 0 }} />
         <List sx={{ p: 1 }} component="nav">
-          
-          <ListItem
-            button
-            to="/management/profile/settings"
-            component={NavLink}
-          >
+          <ListItem button to="/acountSetting" component={NavLink}>
             <AccountTreeTwoToneIcon fontSize="small" />
             <ListItemText primary="Account Settings" />
           </ListItem>
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button color="primary" fullWidth onClick={()=>navigate('/login',{replace:true})}>
+          <Button
+            color="primary"
+            fullWidth
+            onClick={() => navigate('/login', { replace: true })}
+          >
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             Sign out
           </Button>

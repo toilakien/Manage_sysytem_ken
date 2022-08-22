@@ -7,7 +7,8 @@ import {
   TableCell,
   TableBody,
   IconButton,
-  Button
+  Button,
+  styled
 } from '@mui/material';
 // import apiDepartment from "./data";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -48,6 +49,17 @@ const DepartmentList = ({ department }) => {
     setOpenD(true);
     
   }
+  const CusButton=styled(Button)({
+    border:"none",
+    outline:"none",
+    color:"#223354",
+    fontWeight:"300",
+    backgroundColor:"none",
+    "&:hover":{
+      color:"red"
+    },
+    cursor:"pointer"
+  })
   return (
     <div>
       <TableContainer component={Paper}>
@@ -72,7 +84,7 @@ const DepartmentList = ({ department }) => {
               >
                 <TableCell align="right">{index}</TableCell>
                 <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="left"><Button onClick={()=>getDetail(row.id)} variant="text">{row.name}</Button></TableCell>
+                <TableCell align="left"><CusButton  onClick={()=>getDetail(row.id)} variant="text">{row.name}</CusButton></TableCell>
                 <TableCell align="right">{row.code}</TableCell>
                 <TableCell align="right">{row.created_at}</TableCell>
                 <TableCell align="right">{row.updated_at}</TableCell>

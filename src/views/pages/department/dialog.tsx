@@ -19,7 +19,7 @@ const AlertDialog = ({ open, id, setOpen }: any) => {
     getListDepart();
     setOpen(false);
     setActions(true);
-    setSeverity('error')
+    setSeverity('error');
   };
   const getListDepart = async () => {
     await dispatch(getDepartmentList());

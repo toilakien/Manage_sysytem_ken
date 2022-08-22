@@ -7,7 +7,7 @@ import {
   TextField
 } from '@mui/material';
 import { useFormik } from 'formik';
-import { dispatch, useSelector } from 'src/store';
+import { dispatch } from 'src/store';
 import {
   postDepartmentList,
   putDepartmentList
@@ -22,8 +22,6 @@ interface Props {
   id?: number;
 }
 const AddDepartment = (props: Props) => {
-    
-    
   const handleClose = () => {
     props.close(false);
     formik.handleReset('');
@@ -34,22 +32,24 @@ const AddDepartment = (props: Props) => {
   });
   const formik = useFormik({
     initialValues: {
-      name: props.name ? props.name : "",
-      code:props.des ? props.des :  ''
+      name: props.name ? props.name : '',
+      code: props.des ? props.des : ''
     },
     validationSchema,
-    onSubmit: async(values) => {
-      await(props.type
+    onSubmit: async (values) => {
+      await (props.type
         ? dispatch(putDepartmentList(props.id, values))
-        : dispatch(postDepartmentList(values))).then
+        : dispatch(postDepartmentList(values))
+      ).then;
+      
       handleClose();
     }
   });
   return (
     <Dialog onClose={handleClose} open={props.props}>
       <form onSubmit={formik.handleSubmit}>
-        <DialogTitle sx={{ textTransform: 'uppercase', fontWeight: 800 }}>
-          {props.id?'Edit department':'Add department'}
+        <DialogTitle sx={{ textTransform: 'uppercase', fontWeight: 800,borderBottom:"1px solid #ddd" }}>
+          {props.id ? 'Edit department' : 'Add department'}
         </DialogTitle>
         <DialogContent>
           <TextField
@@ -58,7 +58,7 @@ const AddDepartment = (props: Props) => {
             variant="outlined"
             sx={{ width: '100%', mb: 2, mt: 2 }}
             value={formik.values.name}
-            onChange={formik.handleChange}  
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.name && Boolean(formik.errors.name)}
           />
@@ -76,7 +76,7 @@ const AddDepartment = (props: Props) => {
         </DialogContent>
         <DialogActions>
           <Button type="submit" variant="outlined">
-          {props.id?'Edit ':'Add '}
+            {props.id ? 'Edit ' : 'Add '}
           </Button>
           <Button variant="outlined" onClick={handleClose}>
             Cancer

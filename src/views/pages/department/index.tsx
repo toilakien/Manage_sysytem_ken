@@ -9,10 +9,12 @@ import Footer from "src/components/Footer";
 
 const Department = () => {
 
-    const department = useSelector(state => state.department.department);
+    const department = useSelector(state => state.department.department); //department [] 
+
     const getListDepart = async () => {
         await dispatch(getDepartmentList());
     };
+
     useEffect(() => {
         getListDepart();
     }, [postDepartmentList,deleteDepartmentList])
@@ -32,7 +34,6 @@ const Department = () => {
                     >
                         <Grid item xs={12}>
                             <DepartmentList department={department} />
-
                         </Grid>
                     </Grid>
                 </Container>
