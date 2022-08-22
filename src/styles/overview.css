@@ -1,0 +1,83 @@
+.bgRed{
+    background-color: red;
+}
+.bgYellow{
+    background-color: yellow;
+}
+.bgGreen{
+    background-color: rgb(36, 126, 51);
+
+}
+.bgBlue{
+    background-color: rgb(67, 67, 167);
+}
+.bgRedBtn{
+    background-color: rgb(246, 26, 26);
+}
+.bgYellowBtn{
+    background-color: rgb(221, 221, 34);
+}
+.bgGreenBtn{
+    background-color: rgb(31, 107, 44);
+
+}
+.bgBlueBtn{
+    background-color: rgb(80, 80, 137);
+}
+.bgRedBtn:hover{
+    background-color: rgb(254, 45, 45);
+}
+.bgYellowBtn:hover{
+    background-color: rgb(208, 208, 77);
+}
+.bgGreenBtn:hover{
+    background-color: rgb(43, 134, 58);
+
+}
+.bgBlueBtn:hover{
+    background-color: rgb(37, 37, 116);
+}
+.row{
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box-item{
+    width: 250px;
+    height: 150px;
+    border-radius: 5px;
+
+}
+.box-item-left{
+    padding: 15px;
+}
+.box-item-left .number{
+    color: #fff;
+    font-size: 2.4rem;
+    font-family: cursive;
+}
+.box-item-left .text{
+    font-family: cursive;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.box-item-icon{
+    /* position: relative;
+    left: 80px; */
+}
+.btn-box{
+    margin: 0;
+    border: none;
+    cursor: pointer;
+}
+.btn-box button{
+    width: 100%;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    color: #fff;
+    /* border-radius: 5px; */
+    border-radius:5px ;
+
+}
