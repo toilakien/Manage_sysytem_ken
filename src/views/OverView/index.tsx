@@ -9,7 +9,7 @@ const OverView = () => {
   const OverViewWrapper = styled(Grid)({
     p: 2,
     borderRadius: '10px',
-    backgroundColor: '#84ffff',
+    backgroundColor: '#e3f2fd',
     height: '100vh',
     width: '100%'
   });
