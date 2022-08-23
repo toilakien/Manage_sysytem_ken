@@ -44,7 +44,7 @@ function Sidebar() {
           left: 0,
           top: 0,
           background:
-            "#004d40",
+            "#1976d2",
           boxShadow:
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
         }}

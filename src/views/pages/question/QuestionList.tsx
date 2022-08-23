@@ -15,19 +15,21 @@ import {
 // import apiDepartment from "./data";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditButton from '@mui/icons-material/Edit';
-import axios from 'src/utils/axios';
+import { dispatch, useSelector } from 'src/store';
+import { getQuestionList } from 'src/store/slice/question';
 const QuestionList = () => {
-    const [apiQuestion,setapiQuestion]=useState([]);
-  const a = async () => {
-    const resp=await axios.get('http://54.179.46.124/api/v1/operator/questions');
-        setapiQuestion(resp.data.success.data);
-        
-  };
+    // const [apiQuestion,setapiQuestion]=useState([]);
+  
+    const getList=async()=>{
+        await dispatch(getQuestionList())
+    }
   useEffect(()=>{
-    a();
+    getList();
   },[])
+  const apiQuestion=useSelector(state=>state.question.questions)
   console.log(apiQuestion);
   
+ if(apiQuestion){
   return (
     <div>
       <TableContainer component={Paper}>
@@ -76,6 +78,7 @@ const QuestionList = () => {
       </TableContainer>
     </div>
   );
+ }
 };
 
 export default QuestionList;

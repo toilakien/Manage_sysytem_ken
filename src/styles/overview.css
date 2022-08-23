@@ -13,6 +13,7 @@
 }
 .bgRedBtn{
     background-color: rgb(246, 26, 26);
+    
 }
 .bgYellowBtn{
     background-color: rgb(221, 221, 34);
@@ -47,7 +48,10 @@
     width: 250px;
     height: 150px;
     border-radius: 5px;
-
+    transition: transform 2s;
+}
+.box-item:hover{
+    transform: scale(1.05);
 }
 .box-item-left{
     padding: 15px;
@@ -61,6 +65,7 @@
     font-family: cursive;
     color: #fff;
     font-size: 1.2rem;
+    
 }
 .box-item-icon{
     /* position: relative;
