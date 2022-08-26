@@ -42,13 +42,12 @@ const slice = createSlice({
       state.department.filter((e) => e.id !== action.payload);
     },
     putDepartmentSuccess(state, action) {
-      const newState = state.department.map((e) => {
+      state.department= state.department.map((e) => {
         if (e.id == action.payload.id) {
-          e = { ...action.payload };
+         return action.payload
         }
         return e;
       });
-      state.department = [...newState];
     },
     filterDepartmentListSuccess(state,action){
       const newState=state.department.filter((e)=>e.status==action.payload);
@@ -101,9 +100,7 @@ export function deleteDepartmentList(payload: any) {
 export function putDepartmentList(id: any, params: any) {
   return async () => {
     const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
-    if (resp.status == 200 || resp.status == 201) {
       dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
-    }
   };
 }
 export function filterDepartmentList(status:any){

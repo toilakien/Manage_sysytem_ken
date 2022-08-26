@@ -12,6 +12,7 @@ import {
   postDepartmentList,
   putDepartmentList
 } from 'src/store/slice/department';
+import { snackbarList } from 'src/store/slice/snackbar';
 import * as yup from 'yup';
 interface Props {
   props: boolean;
@@ -39,9 +40,9 @@ const AddDepartment = (props: Props) => {
     onSubmit: async (values) => {
       await (props.type
         ? dispatch(putDepartmentList(props.id, values))
-        : dispatch(postDepartmentList(values))
-      ).then;
-      
+        : (dispatch(postDepartmentList(values)) )
+      ).then
+      snackbarList({actions:true,severity:"success",content:"Add success!!!!",color:"green"})
       handleClose();
     }
   });

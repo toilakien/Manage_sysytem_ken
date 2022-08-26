@@ -7,6 +7,7 @@ import {
 import axios from 'src/utils/axios';
 import jwtDecode from 'jwt-decode';
 import accountReducer from 'src/store/slice/accountReducer';
+import { snackbarList } from 'src/store/slice/snackbar';
 const URL_LOGIN = `${process.env.REACT_APP_API_URL}/v1/login`;
 
 const verifyToken: (st: string) => boolean = (serviceToken) => {
@@ -71,7 +72,12 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
             user
           }
         });
+        snackbarList({actions:true,severity:"success",content:"Login success!",color:"green"})
         
+      }
+      else{
+        snackbarList({actions:true,severity:"error",content:"Login fail!",color:"red"})
+
       }
     } catch (error) {
       console.log(error);

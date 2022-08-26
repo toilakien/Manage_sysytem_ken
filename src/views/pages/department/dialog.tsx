@@ -9,7 +9,6 @@ import {
   getDepartmentList
 } from 'src/store/slice/department';
 import { dispatch } from 'src/store';
-import CustomizedSnackbars from 'src/components/Snackbar';
 import { snackbarList } from 'src/store/slice/snackbar';
 
 const AlertDialog = ({ open, id, setOpen }: any) => {
@@ -18,7 +17,7 @@ const AlertDialog = ({ open, id, setOpen }: any) => {
     dispatch(deleteDepartmentList(id));
     getListDepart();
     setOpen(false);
-    snackbarList({actions:true,severity:"success",content:"Delete success!"})
+    snackbarList({actions:true,severity:"success",content:"Delete success!",color:"green"})
    
   };
   const getListDepart = async () => {

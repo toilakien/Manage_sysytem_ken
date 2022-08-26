@@ -12,6 +12,7 @@ function App() {
   const actions=useSelector(state=>state?.snackbar?.snackbar?.actions)
   const severity=useSelector(state=>state?.snackbar?.snackbar?.severity)
   const content=useSelector(state=>state?.snackbar?.snackbar?.content)
+  const color=useSelector(state=>state?.snackbar?.snackbar?.color)
  
  console.log("actions",actions);console.log("severity",severity);
     
@@ -23,7 +24,7 @@ function App() {
           <Routes />
         </JWTProvider>
          {(actions!=""&&severity!="")?
-          <CustomizedSnackbars actions={actions} severity={severity} content={content}/>:""
+          <CustomizedSnackbars actions={actions} severity={severity} content={content} color={color}/>:""
          }
         
       </LocalizationProvider>

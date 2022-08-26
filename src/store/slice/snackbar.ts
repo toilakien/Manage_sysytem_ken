@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 interface Payload{
     actions?:any,
     severity?:any,
-    content?:any
+    content?:any,
+    color?:any
 }
 interface StateProps{
     snackbar:Payload
