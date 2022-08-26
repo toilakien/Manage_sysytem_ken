@@ -33,24 +33,26 @@ const slice = createSlice({
     },
     postDepartmentSuccess(state, action) {
       console.log(action.payload);
-
       state.department.unshift(action.payload);
     },
     deleteDepartmentSuccess(state, action) {
-
-      state.department= state.department.filter((e) => e.id !== action.payload);
+      state.department = state.department.filter(
+        (e) => e.id != action.payload.id
+      );
     },
     putDepartmentSuccess(state, action) {
-      state.department= state.department.map((e) => {
+      state.department = state.department.map((e) => {
         if (e.id == action.payload.id) {
-         return action.payload
+          return action.payload;
         }
         return e;
       });
     },
-    filterDepartmentListSuccess(state,action){
-      const newState=state.department.filter((e)=>e.status==action.payload);
-      state.department=[...newState];
+    filterDepartmentListSuccess(state, action) {
+      const newState = state.department.filter(
+        (e) => e.status == action.payload
+      );
+      state.department = [...newState];
     }
   }
 });
@@ -83,12 +85,10 @@ export function postDepartmentList(payload: any) {
   };
 }
 
-export function deleteDepartmentList(payload: any) {
+export function deleteDepartmentList(id: any) {
   return async () => {
     try {
-      const resp = await axios.delete(
-        `${DEPARTMENT_URL.delDepartment(payload)}`
-      );
+      const resp = await axios.delete(`${DEPARTMENT_URL.delDepartment(id)}`);
 
       dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success));
     } catch (error) {
@@ -99,11 +99,11 @@ export function deleteDepartmentList(payload: any) {
 export function putDepartmentList(id: any, params: any) {
   return async () => {
     const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
-      dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
+    dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
   };
 }
-export function filterDepartmentList(status:any){
-  return async()=>{
+export function filterDepartmentList(status: any) {
+  return async () => {
     await dispatch(slice.actions.filterDepartmentListSuccess(status));
-  }
+  };
 }

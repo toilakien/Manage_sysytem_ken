@@ -18,11 +18,10 @@ import EditButton from '@mui/icons-material/Edit';
 import { dispatch } from 'src/store';
 import { deleteLanguageList } from 'src/store/slice/language';
 
-const LanguageList = ({languageList}:{languageList:any}) => {
-  
-  const handleDelete=(id:any)=>{
-    dispatch(deleteLanguageList(id))
-  }
+const LanguageList = ({ languageList }: { languageList: any }) => {
+  const handleDelete = (id: any) => {
+    dispatch(deleteLanguageList(id));
+  };
   if (languageList) {
     return (
       <div>
@@ -56,7 +55,11 @@ const LanguageList = ({languageList}:{languageList:any}) => {
                     {row.status ? 'Active' : 'no'}
                   </TableCell>
                   <TableCell align="right" sx={{ display: 'flex' }}>
-                    <IconButton sx={{ color: 'red' }} aria-label="delete" onClick={()=>handleDelete(row.id)}>
+                    <IconButton
+                      sx={{ color: 'red' }}
+                      aria-label="delete"
+                      onClick={() => handleDelete(row.id)}
+                    >
                       <DeleteIcon />
                     </IconButton>
                     <IconButton sx={{ color: 'yellow' }} aria-label="edit">
