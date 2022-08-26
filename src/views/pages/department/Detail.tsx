@@ -1,5 +1,5 @@
 import {
-    Button,
+  Button,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -14,18 +14,19 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
   const handleClose = () => {
     setOpenD(false);
   };
-  const ButtonDetails=styled(Button)({
-        border:"1px solid #00b0ff",
-        marginTop:"10px",
-        position:"relative",
-        left:"40%",
-        backgroundColor:"#33eaff",
-        cursor:"pointer",
-        '&:hover':{
-            backgroundColor:"#fff",
-            color:"#33eaff"
-        }
-  })
+  const ButtonDetails = styled(Button)({
+    color: '#fff',
+    border: '1px solid #ddd',
+    backgroundColor: '#3949ab',
+    width: '200px',
+    marginTop: '10px',
+    position: 'relative',
+    left: '30%',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    overflow: 'hidden',
+    
+  });
   return (
     <Dialog open={openD} onClose={handleClose}>
       <Grid sx={{ display: 'flex', alignItems: 'center' }}>
@@ -36,7 +37,12 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
           <CloseIcon sx={{ color: 'red' }} />
         </IconButton>
         <DialogTitle
-          sx={{ position: 'relative', left: '32%' }}
+          sx={{
+            position: 'relative',
+            left: '32%',
+            color: 'blue',
+            fontFamily: 'cursive'
+          }}
           textTransform={'uppercase'}
           variant="h3"
         >
@@ -45,24 +51,37 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
       </Grid>
       {detail ? (
         <DialogContent>
-          Name:
-          <TextField value={detail.name} disabled sx={{ width: '100%' }} />
-          Code:
-          <TextField value={detail.code} disabled sx={{ width: '100%' }} />
-          Status:
           <TextField
+            margin="normal"
+            label={detail.name}
+            value={detail.name}
+            disabled
+            sx={{ width: '100%' }}
+          />
+          <TextField
+            margin="normal"
+            label={detail.code}
+            value={detail.code}
+            disabled
+            sx={{ width: '100%' }}
+          />
+          <TextField
+            margin="normal"
+            label={'Status'}
             value={detail.status ? 'Active' : 'None'}
             disabled
             sx={{ width: '100%' }}
           />
-          Created_at:
           <TextField
+            margin="normal"
+            label={'Created_at'}
             value={detail.created_at}
             disabled
             sx={{ width: '100%' }}
           />
-          Updated_at:
           <TextField
+            margin="normal"
+            label={'Updated_at'}
             value={detail.updated_at}
             disabled
             sx={{ width: '100%' }}

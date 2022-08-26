@@ -6,6 +6,7 @@ import DepartmentList from "./DepartmentList";
 import { deleteDepartmentList, getDepartmentList, postDepartmentList } from "src/store/slice/department";
 import { dispatch, useSelector } from "src/store";
 import Footer from "src/components/Footer";
+import SfDepartment from "./SfDepartment";
 
 const Department = () => {
 
@@ -25,6 +26,7 @@ const Department = () => {
                     <HeaderDepartment />
                 </PageTitleWrapper>
                 <Container maxWidth="lg">
+                <SfDepartment/><br/>
                     <Grid
                         container
                         direction="row"

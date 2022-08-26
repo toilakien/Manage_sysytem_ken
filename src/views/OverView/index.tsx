@@ -3,7 +3,6 @@ import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import '../../styles/overview.css';
 import BoxItem from './BoxItem';
 import { useSelector } from 'src/store';
-import { useEffect } from 'react';
 
 const OverView = () => {
   const OverViewWrapper = styled(Grid)({
@@ -13,8 +12,8 @@ const OverView = () => {
     height: '100vh',
     width: '100%'
   });
-  const countDepartment=useSelector(state=>state.department.department.length)
-
+  const countDepartment=useSelector(state=>state.department.department.length);
+  const countQuestion=useSelector(state=>state.question.questions.length);
   
   return (
     <Container>
@@ -27,7 +26,7 @@ const OverView = () => {
         </Typography>
         <div className="row">
           <BoxItem clBox='bgRed'clBtn='bgRedBtn' number={countDepartment} question="Department"/> 
-          <BoxItem clBox='bgYellow'clBtn='bgYellowBtn' number={'6'} question="Question"/> 
+          <BoxItem clBox='bgYellow'clBtn='bgYellowBtn' number={countQuestion} question="Question"/> 
           <BoxItem clBox='bgBlue'clBtn='bgBlueBtn' number={'46'} question="Rank"/> 
           <BoxItem clBox='bgGreen'clBtn='bgGreenBtn' number={'23'} question="Language"/> 
         </div>

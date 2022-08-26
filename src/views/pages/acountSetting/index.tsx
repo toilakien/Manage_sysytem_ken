@@ -1,9 +1,10 @@
-import { Avatar, Box, Button, Container, Grid, styled, Typography } from '@mui/material';
+import { Box, Container, Grid, styled, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import { useState } from 'react';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 const AccountSetting = () => {
-  const [img, setImg] = useState('');
+  const [selectedImage, setSelectedImage] = useState<any>('https://i.stack.imgur.com/ILTQq.png');
+
   const AcountSettingWrapper = styled(Box)({
     display: 'flex',
     width: '100%',
@@ -37,17 +38,20 @@ const AccountSetting = () => {
     }
   });
   const TaskList = styled(Grid)({
-    display:"flex",
-    justifyContent:"space-around",
-    borderBottom:"1px solid #fff",
-    padding:"15px",
-   
+    display: 'flex',
+    justifyContent: 'space-around',
+    borderBottom: '1px solid #fff',
+    padding: '15px'
   });
-  const handleChange = () => {};
+  const handleUpload=(e)=>{
+    setSelectedImage(URL.createObjectURL(e.target.files[0]))
+  }
   return (
-    <Container fixed sx={{maxHeight:"100%"}}>
+    <Container fixed sx={{ maxHeight: '100%' }}>
       <PageTitleWrapper>
-        <Typography sx={{textAlign:"center"}} variant="h2">Personal Profile</Typography>
+        <Typography sx={{ textAlign: 'center' }} variant="h2">
+          Personal Profile
+        </Typography>
       </PageTitleWrapper>
       <AcountSettingWrapper>
         <BoxCus width={'30%'}>
@@ -62,12 +66,17 @@ const AccountSetting = () => {
               borderBottom: '3px solid #fff'
             }}
           >
-            <Avatar
-              sx={{ width: 56, height: 56, mr: 5 }}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJjMTliI4r2bnBlfkbRP0KXZQWOhmW76m2CQ&usqp=CAU"
+            <img style={{
+              borderRadius:"100%"
+            }}
+              alt="not fount"
+              width={'250px'}
+              src={selectedImage}
             />
+          {/* <UploadAndDisplayImage selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> */}
             <AvataTitle>Mentor</AvataTitle>
           </Box>
+          <br/><br/><br/>
           <Box>
             <ListItem>
               <PersonIcon />
@@ -87,44 +96,61 @@ const AccountSetting = () => {
               <Typography>User</Typography>
             </ListItem>
           </Box>
+            <input style={{position:"relative",top:"80px",left:"30px"}} type={"file"} onChange={handleUpload}/>
 
-          <Button sx={{ ml: 9, mt: 10 }} variant="contained" component="label">
-            Upload
-            <input
-              onChange={handleChange}
-              name="avata"
-              hidden
-              accept="image/*"
-              multiple
-              type="file"
-            />
-          </Button>
         </BoxCus>
         <BoxCus width={'60%'}>
           <Grid>
-            <Typography variant="h2"  sx={{textAlign:"center",p:3,borderBottom:"2px solid #fff"}}>Personal Details</Typography>
+            <Typography
+              variant="h2"
+              sx={{ textAlign: 'center', p: 3, borderBottom: '2px solid #fff' }}
+            >
+              Personal Details
+            </Typography>
           </Grid>
           <Grid>
             <TaskList>
-                <Typography sx={{fontSize:"1.2rem"}} variant='subtitle1'>Full name</Typography>
-                <Typography sx={{fontSize:"1.2rem"}} variant='body1'>Admin</Typography>
-            </TaskList> 
+              <Typography sx={{ fontSize: '1.2rem' }} variant="subtitle1">
+                Full name
+              </Typography>
+              <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
+                Admin
+              </Typography>
+            </TaskList>
             <TaskList>
-                <Typography sx={{fontSize:"1.2rem"}} variant='subtitle1'>Phone Number</Typography>
-                <Typography sx={{fontSize:"1.2rem"}} variant='body1'>0922222222</Typography>
-            </TaskList> 
+              <Typography sx={{ fontSize: '1.2rem' }} variant="subtitle1">
+                Phone Number
+              </Typography>
+              <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
+                0922222222
+              </Typography>
+            </TaskList>
             <TaskList>
-                <Typography sx={{fontSize:"1.2rem"}} variant='subtitle1'>Date Of Birth</Typography>
-                <Typography sx={{fontSize:"1.2rem"}} variant='body1'>16/6/2022</Typography>
-            </TaskList> 
+              <Typography sx={{ fontSize: '1.2rem' }} variant="subtitle1">
+                Date Of Birth
+              </Typography>
+              <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
+                16/6/2022
+              </Typography>
+            </TaskList>
             <TaskList>
-                <Typography sx={{fontSize:"1.2rem"}} variant='subtitle1'>Gender</Typography>
-                <Typography sx={{fontSize:"1.2rem"}} variant='body1'>	Male</Typography>
-            </TaskList> 
+              <Typography sx={{ fontSize: '1.2rem' }} variant="subtitle1">
+                Gender
+              </Typography>
+              <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
+               
+                Male
+              </Typography>
+            </TaskList>
             <TaskList>
-                <Typography sx={{fontSize:"1.2rem"}} variant='subtitle1'>Position</Typography>
-                <Typography sx={{fontSize:"1.2rem"}} variant='body1'>	Administrator</Typography>
-            </TaskList> 
+              <Typography sx={{ fontSize: '1.2rem' }} variant="subtitle1">
+                Position
+              </Typography>
+              <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
+                
+                Administrator
+              </Typography>
+            </TaskList>
           </Grid>
         </BoxCus>
       </AcountSettingWrapper>

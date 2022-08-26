@@ -3,23 +3,20 @@ import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-export default function CustomizedSnackbars({ actions, severity }) {
-  const [open, setOpen] = React.useState(false);
-  console.log(actions);
+import { CloseSnackbarList } from 'src/store/slice/snackbar';
+import { dispatch } from 'src/store';
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+export default function CustomizedSnackbars({ actions, severity,content }) {
 
-    setOpen(false);
+  const handleClose = () => {
+    dispatch(CloseSnackbarList(false));
   };
 
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar open={actions} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={actions} autoHideDuration={1000} onClose={handleClose}>
         <Alert severity={severity}>
-          This is an error alert — check it out!
+        {content}
         </Alert>
       </Snackbar>
     </Stack>

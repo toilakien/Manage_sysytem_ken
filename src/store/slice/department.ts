@@ -49,6 +49,10 @@ const slice = createSlice({
         return e;
       });
       state.department = [...newState];
+    },
+    filterDepartmentListSuccess(state,action){
+      const newState=state.department.filter((e)=>e.status==action.payload);
+      state.department=[...newState];
     }
   }
 });
@@ -101,4 +105,9 @@ export function putDepartmentList(id: any, params: any) {
       dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
     }
   };
+}
+export function filterDepartmentList(status:any){
+  return async()=>{
+    await dispatch(slice.actions.filterDepartmentListSuccess(status));
+  }
 }

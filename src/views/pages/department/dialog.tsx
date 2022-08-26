@@ -10,16 +10,16 @@ import {
 } from 'src/store/slice/department';
 import { dispatch } from 'src/store';
 import CustomizedSnackbars from 'src/components/Snackbar';
+import { snackbarList } from 'src/store/slice/snackbar';
 
 const AlertDialog = ({ open, id, setOpen }: any) => {
-  const [actions, setActions] = React.useState(false);
-  const [severity, setSeverity] = React.useState('success');
+  
   const handleDedete = (id) => {
     dispatch(deleteDepartmentList(id));
     getListDepart();
     setOpen(false);
-    setActions(true);
-    setSeverity('error');
+    snackbarList({actions:true,severity:"success",content:"Delete success!"})
+   
   };
   const getListDepart = async () => {
     await dispatch(getDepartmentList());
@@ -46,7 +46,6 @@ const AlertDialog = ({ open, id, setOpen }: any) => {
             Agree
           </Button>
         </DialogActions>
-        <CustomizedSnackbars actions={actions} severity={severity} />
       </Dialog>
     </div>
   );
