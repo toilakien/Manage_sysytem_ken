@@ -37,9 +37,8 @@ const slice = createSlice({
       state.department.unshift(action.payload);
     },
     deleteDepartmentSuccess(state, action) {
-      console.log(action.payload);
 
-      state.department.filter((e) => e.id !== action.payload);
+      state.department= state.department.filter((e) => e.id !== action.payload);
     },
     putDepartmentSuccess(state, action) {
       state.department= state.department.map((e) => {

@@ -15,14 +15,14 @@ const AlertDialog = ({ open, id, setOpen }: any) => {
   
   const handleDedete = (id) => {
     dispatch(deleteDepartmentList(id));
-    getListDepart();
+    // getListDepart();
     setOpen(false);
     snackbarList({actions:true,severity:"success",content:"Delete success!",color:"green"})
    
   };
-  const getListDepart = async () => {
-    await dispatch(getDepartmentList());
-  };
+  // const getListDepart = async () => {
+  //   await dispatch(getDepartmentList());
+  // };
   const handleClose = () => {
     setOpen(false);
   };
