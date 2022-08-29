@@ -37,13 +37,17 @@ const AddDepartment = (props: Props) => {
       code: props.des ? props.des : ''
     },
     validationSchema,
-    onSubmit: async (values) => {
-      await (props.type
-        ? dispatch(putDepartmentList(props.id, values))
-        : (dispatch(postDepartmentList(values)) )
-      ).then
-      snackbarList({actions:true,severity:"success",content:"Add success!!!!",color:"green"})
-      handleClose();
+    onSubmit:  (values) => {
+      console.log(props.type);
+      
+        if(props.type){
+          dispatch(putDepartmentList({id:props.id, values}))
+        }
+        else{
+          dispatch(postDepartmentList(values))
+          snackbarList({actions:true,severity:"success",content:"Add success!!!!",color:"green"})
+        }
+        handleClose();
     }
   });
   return (

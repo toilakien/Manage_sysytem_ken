@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Container, Grid } from '@mui/material';
 import Footer from 'src/components/Footer';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
@@ -9,9 +8,9 @@ import { renderLanguageList } from 'src/store/slice/language';
 import { dispatch, useSelector } from 'src/store';
 
 const Language = () => {
-    const apiList = async () => {
-        await dispatch(renderLanguageList());
-    };
+  const apiList = async () => {
+    await dispatch(renderLanguageList());
+  };
   useEffect(() => {
     apiList();
   }, []);
@@ -31,7 +30,7 @@ const Language = () => {
             spacing={3}
           >
             <Grid item xs={12}>
-              <LanguageList  languageList={languageList} />
+              <LanguageList languageList={languageList} />
             </Grid>
           </Grid>
         </Container>
@@ -40,7 +39,5 @@ const Language = () => {
     </div>
   );
 };
-
-Language.propTypes = {};
 
 export default Language;

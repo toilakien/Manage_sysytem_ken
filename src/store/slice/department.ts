@@ -96,9 +96,10 @@ export function deleteDepartmentList(id: any) {
     }
   };
 }
-export function putDepartmentList(id: any, params: any) {
+export function putDepartmentList({id,params}:any) {
   return async () => {
     const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
+    console.log("edit");
     dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
   };
 }
