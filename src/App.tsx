@@ -9,13 +9,11 @@ import CustomizedSnackbars from './components/Snackbar';
 import { useSelector } from './store';
 
 function App() {
-  const actions=useSelector(state=>state?.snackbar?.snackbar?.actions)
-  const severity=useSelector(state=>state?.snackbar?.snackbar?.severity)
-  const content=useSelector(state=>state?.snackbar?.snackbar?.content)
-  const color=useSelector(state=>state?.snackbar?.snackbar?.color)
- 
- console.log("actions",actions);console.log("severity",severity);
-    
+  const actions = useSelector((state) => state?.snackbar?.snackbar?.actions);
+  const severity = useSelector((state) => state?.snackbar?.snackbar?.severity);
+  const content = useSelector((state) => state?.snackbar?.snackbar?.content);
+  const color = useSelector((state) => state?.snackbar?.snackbar?.color);
+
   return (
     <ThemeProvider>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -23,10 +21,16 @@ function App() {
         <JWTProvider>
           <Routes />
         </JWTProvider>
-         {(actions!=""&&severity!="")?
-          <CustomizedSnackbars actions={actions} severity={severity} content={content} color={color}/>:""
-         }
-        
+        {actions != '' && severity != '' ? (
+          <CustomizedSnackbars
+            actions={actions}
+            severity={severity}
+            content={content}
+            color={color}
+          />
+        ) : (
+          ''
+        )}
       </LocalizationProvider>
     </ThemeProvider>
   );

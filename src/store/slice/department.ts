@@ -32,7 +32,6 @@ const slice = createSlice({
       state.currentPage = action.payload.current_page;
     },
     postDepartmentSuccess(state, action) {
-      console.log(action.payload);
       state.department.unshift(action.payload);
     },
     deleteDepartmentSuccess(state, action) {
@@ -71,12 +70,12 @@ export function getDepartmentList() {
     } catch (error) {}
   };
 }
-export function postDepartmentList(payload: any) {
+export function postDepartmentList(params: Payload) {
   return async () => {
     try {
       const resp = await axios.post(
         `${DEPARTMENT_URL.postDepartment}`,
-        payload
+        params
       );
       dispatch(slice.actions.postDepartmentSuccess(resp.data.success));
     } catch (error) {
@@ -85,7 +84,7 @@ export function postDepartmentList(payload: any) {
   };
 }
 
-export function deleteDepartmentList(id: any) {
+export function deleteDepartmentList(id: Payload) {
   return async () => {
     try {
       const resp = await axios.delete(`${DEPARTMENT_URL.delDepartment(id)}`);
@@ -96,10 +95,9 @@ export function deleteDepartmentList(id: any) {
     }
   };
 }
-export function putDepartmentList({id,params}:any) {
+export function putDepartmentList({id,params}:Payload) {
   return async () => {
     const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
-    console.log("edit");
     dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
   };
 }

@@ -2,7 +2,7 @@ import { Languages } from './../../types/language';
 import { dispatch } from 'src/store';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'src/utils/axios';
-import { LanguageStateProps } from 'src/types/language';
+import { LanguageStateProps,Payload } from 'src/types/language';
 export const QUESTIONS_URL = {
   getlist: `${process.env.REACT_APP_API_URL}/v1/operator/languages`,
   postList: `${process.env.REACT_APP_API_URL}/v1/operator/languages`,
@@ -25,7 +25,7 @@ const slice = createSlice({
       state.currentPage = action.payload.current_page;
     },
     postLanguageListSuccess(state, action) {
-      state.language = [...state.language, action.payload];
+      state.language = [ action.payload,...state.language];
     },
     deleteLanguageListSuccess(state, action) {
       state.language = state.language.filter(
@@ -51,7 +51,7 @@ export function postLanguageList(params: Languages) {
     }
   };
 }
-export function deleteLanguageList(id: any) {
+export function deleteLanguageList(id: Payload) {
   return async () => {
     const resp = await axios.delete(QUESTIONS_URL.deleteList(id));
       dispatch(slice.actions.deleteLanguageListSuccess(resp.data.success));
