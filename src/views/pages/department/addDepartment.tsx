@@ -13,6 +13,7 @@ import {
   putDepartmentList
 } from 'src/store/slice/department';
 import { snackbarList } from 'src/store/slice/snackbar';
+import { Department } from 'src/types/department';
 import * as yup from 'yup';
 interface Props {
   props: boolean;
@@ -37,23 +38,31 @@ const AddDepartment = (props: Props) => {
       code: props.des ? props.des : ''
     },
     validationSchema,
-    onSubmit:  (values) => {
-      console.log(props.type);
-      
-        if(props.type){
-          dispatch(putDepartmentList({id:props.id, values}))
-        }
-        else{
-          dispatch(postDepartmentList(values))
-          snackbarList({actions:true,severity:"success",content:"Add success!!!!",color:"green"})
-        }
-        handleClose();
+    onSubmit: (values: Department) => {
+      if (props.type) {
+        dispatch(putDepartmentList({ id: props.id, params: values }));
+      } else {
+        dispatch(postDepartmentList(values));
+        snackbarList({
+          actions: true,
+          severity: 'success',
+          content: 'Add success!!!!',
+          color: 'green'
+        });
+      }
+      handleClose();
     }
   });
   return (
     <Dialog onClose={handleClose} open={props.props}>
       <form onSubmit={formik.handleSubmit}>
-        <DialogTitle sx={{ textTransform: 'uppercase', fontWeight: 800,borderBottom:"1px solid #ddd" }}>
+        <DialogTitle
+          sx={{
+            textTransform: 'uppercase',
+            fontWeight: 800,
+            borderBottom: '1px solid #ddd'
+          }}
+        >
           {props.id ? 'Edit department' : 'Add department'}
         </DialogTitle>
         <DialogContent>

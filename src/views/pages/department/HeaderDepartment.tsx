@@ -1,29 +1,31 @@
-import { Grid, IconButton, styled, Typography } from "@mui/material";
+import { Grid, IconButton, styled, Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import AddDepartment from "./addDepartment";
-import React from "react";
+import AddDepartment from './addDepartment';
+import React from 'react';
 
 const HeaderDepartment = () => {
-    const handleClick = () => {
-        setOpen(true);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const [open, setOpen] = React.useState<boolean>(false);
+  const IconButtonCustom = styled(IconButton)({
+    color: 'blue',
+    transition: 'color 1s',
+    '&:hover': {
+      color: 'red',
+      transform: 'scale(1.1)'
     }
-    const [open, setOpen] = React.useState<boolean>(false);
-    const IconButtonCustom=styled(IconButton)({
-        color:"blue",
-        transition:"color 1s",
-        "&:hover":{
-            color:"red",
-            transform:"scale(1.1)" 
-        }
-    })
-    return (
-        <Grid sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography sx={{color:"#00695c"}} variant="h3">Department</Typography>
-            <IconButtonCustom onClick={handleClick}>
-                <AddCircleIcon />
-            </IconButtonCustom>
-            <AddDepartment props={open} close={setOpen} />
-        </Grid>
-    )
-}
+  });
+  return (
+    <Grid sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Typography sx={{ color: '#00695c' }} variant="h3">
+        Department
+      </Typography>
+      <IconButtonCustom onClick={handleClick}>
+        <AddCircleIcon />
+      </IconButtonCustom>
+      <AddDepartment props={open} close={setOpen} />
+    </Grid>
+  );
+};
 export default HeaderDepartment;

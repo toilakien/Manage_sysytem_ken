@@ -24,8 +24,7 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
     left: '30%',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
-    overflow: 'hidden',
-    
+    overflow: 'hidden'
   });
   return (
     <Dialog open={openD} onClose={handleClose}>
