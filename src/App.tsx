@@ -9,11 +9,11 @@ import CustomizedSnackbars from './components/Snackbar';
 import { useSelector } from './store';
 
 function App() {
+  
   const actions = useSelector((state) => state?.snackbar?.snackbar?.actions);
   const severity = useSelector((state) => state?.snackbar?.snackbar?.severity);
   const content = useSelector((state) => state?.snackbar?.snackbar?.content);
   const color = useSelector((state) => state?.snackbar?.snackbar?.color);
-
   return (
     <ThemeProvider>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -21,7 +21,8 @@ function App() {
         <JWTProvider>
           <Routes />
         </JWTProvider>
-        {actions != '' && severity != '' ? (
+        
+        { actions != false && severity != '' ? (
           <CustomizedSnackbars
             actions={actions}
             severity={severity}
