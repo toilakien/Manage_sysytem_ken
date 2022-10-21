@@ -18,10 +18,10 @@ import * as yup from 'yup';
 interface Props {
   props: boolean;
   close: any;
-  des?: string;
+  code?: string;
   name?: string;
   type?: boolean;
-  id?: number;
+  _id?: number;
 }
 const AddDepartment = (props: Props) => {
   const handleClose = () => {
@@ -30,17 +30,17 @@ const AddDepartment = (props: Props) => {
   };
   const validationSchema = yup.object({
     // name: yup.string().trim().max(50).required('Name is required'),
-    // description: yup.string().trim().max(255).required('Description is required')
+    // codecription: yup.string().trim().max(255).required('codecription is required')
   });
   const formik = useFormik({
     initialValues: {
       name: props.name ? props.name : '',
-      code: props.des ? props.des : ''
+      code: props.code ? props.code : ''
     },
     validationSchema,
     onSubmit: (values: Department) => {
       if (props.type) {
-        dispatch(putDepartmentList({ id: props.id, params: values }));
+        dispatch(putDepartmentList({ _id: props._id, params: values }));
       } else {
         dispatch(postDepartmentList(values));
         snackbarList({
@@ -63,7 +63,7 @@ const AddDepartment = (props: Props) => {
             borderBottom: '1px solid #ddd'
           }}
         >
-          {props.id ? 'Edit department' : 'Add department'}
+          {props._id ? 'Edit department' : 'Add department'}
         </DialogTitle>
         <DialogContent>
           <TextField
@@ -90,7 +90,7 @@ const AddDepartment = (props: Props) => {
         </DialogContent>
         <DialogActions>
           <Button type="submit" variant="outlined">
-            {props.id ? 'Edit ' : 'Add '}
+            {props._id ? 'Edit ' : 'Add '}
           </Button>
           <Button variant="outlined" onClick={handleClose}>
             Cancer

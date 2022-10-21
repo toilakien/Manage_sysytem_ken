@@ -4,15 +4,15 @@ import { DepartmentStateProps, Payload } from 'src/types/department';
 import { dispatch } from '..';
 
 export const DEPARTMENT_URL = {
-  getDepartmen: `${process.env.REACT_APP_API_URL}/v1/operator/department`,
-  getAll: `${process.env.REACT_APP_API_URL}/v1/department/all`,
-  postDepartment: `${process.env.REACT_APP_API_URL}/v1/operator/department`,
+  getDepartmen: `${process.env.REACT_APP_API_URL}/v1/customer`,
+  getAll: `${process.env.REACT_APP_API_URL}/v1/customer`,
+  postDepartment: `${process.env.REACT_APP_API_URL}/v1/customer`,
   putDepartment: (id: any) =>
-    `${process.env.REACT_APP_API_URL}/v1/operator/department/${id}`,
+    `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
   delDepartment: (id: any) =>
-    `${process.env.REACT_APP_API_URL}/v1/operator/department/${id}`,
+    `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
   getDetailDepartment: (id: string) =>
-    `${process.env.REACT_APP_API_URL}/v1/operator/department/${id}`
+    `${process.env.REACT_APP_API_URL}/v1/customer/${id}`
 };
 
 const initialState: DepartmentStateProps = {
@@ -36,12 +36,12 @@ const slice = createSlice({
     },
     deleteDepartmentSuccess(state, action) {
       state.department = state.department.filter(
-        (e) => e.id != action.payload.id
+        (e) => e._id != action.payload._id
       );
     },
     putDepartmentSuccess(state, action) {
       state.department = state.department.map((e) => {
-        if (e.id == action.payload.id) {
+        if (e._id == action.payload._id) {
           return action.payload;
         }
         return e;
@@ -49,7 +49,7 @@ const slice = createSlice({
     },
     filterDepartmentListSuccess(state, action) {
       const newState = state.department.filter(
-        (e) => e.status == action.payload
+        (e) => e.active == action.payload
       );
       state.department = [...newState];
     }
@@ -66,18 +66,17 @@ export function getDepartmentList() {
   return async () => {
     try {
       const resp = await axios.get(`${DEPARTMENT_URL.getDepartmen}`);
+      console.log(resp.data.success);
       dispatch(slice.actions.getDepartmentListSuccess(resp.data.success));
+      
     } catch (error) {}
   };
 }
 export function postDepartmentList(params: Payload) {
   return async () => {
     try {
-      const resp = await axios.post(
-        `${DEPARTMENT_URL.postDepartment}`,
-        params
-      );
-      dispatch(slice.actions.postDepartmentSuccess(resp.data.success));
+      const resp = await axios.post(`${DEPARTMENT_URL.postDepartment}`, params);
+      dispatch(slice.actions.postDepartmentSuccess(resp.data.success.data));
     } catch (error) {
       console.log(error);
     }
@@ -89,20 +88,20 @@ export function deleteDepartmentList(id: Payload) {
     try {
       const resp = await axios.delete(`${DEPARTMENT_URL.delDepartment(id)}`);
 
-      dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success));
+      dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success.data));
     } catch (error) {
       console.log(error);
     }
   };
 }
-export function putDepartmentList({id,params}:Payload) {
+export function putDepartmentList({ _id, params }: Payload) {
   return async () => {
-    const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(id)}`, params);
-    dispatch(slice.actions.putDepartmentSuccess(resp.data.success));
+    const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(_id)}`, params);
+    dispatch(slice.actions.putDepartmentSuccess(resp.data.success.data));
   };
 }
-export function filterDepartmentList(status: any) {
+export function filterDepartmentList(active: any) {
   return async () => {
-    await dispatch(slice.actions.filterDepartmentListSuccess(status));
+    await dispatch(slice.actions.filterDepartmentListSuccess(active));
   };
 }

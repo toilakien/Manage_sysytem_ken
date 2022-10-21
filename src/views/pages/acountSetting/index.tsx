@@ -3,7 +3,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useState } from 'react';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 const AccountSetting = () => {
-  const [selectedImage, setSelectedImage] = useState<any>('https://i.stack.imgur.com/ILTQq.png');
+  const [selectedImage, setSelectedImage] = useState<any>(
+    'https://i.stack.imgur.com/ILTQq.png'
+  );
 
   const AcountSettingWrapper = styled(Box)({
     display: 'flex',
@@ -43,9 +45,9 @@ const AccountSetting = () => {
     borderBottom: '1px solid #fff',
     padding: '15px'
   });
-  const handleUpload=(e)=>{
-    setSelectedImage(URL.createObjectURL(e.target.files[0]))
-  }
+  const handleUpload = (e) => {
+    setSelectedImage(URL.createObjectURL(e.target.files[0]));
+  };
   return (
     <Container fixed sx={{ maxHeight: '100%' }}>
       <PageTitleWrapper>
@@ -66,17 +68,20 @@ const AccountSetting = () => {
               borderBottom: '3px solid #fff'
             }}
           >
-            <img style={{
-              borderRadius:"100%"
-            }}
+            <img
+              style={{
+                borderRadius: '100%'
+              }}
               alt="not fount"
               width={'250px'}
               src={selectedImage}
             />
-          {/* <UploadAndDisplayImage selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> */}
+            {/* <UploadAndDisplayImage selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> */}
             <AvataTitle>Mentor</AvataTitle>
           </Box>
-          <br/><br/><br/>
+          <br />
+          <br />
+          <br />
           <Box>
             <ListItem>
               <PersonIcon />
@@ -96,8 +101,11 @@ const AccountSetting = () => {
               <Typography>User</Typography>
             </ListItem>
           </Box>
-            <input style={{position:"relative",top:"80px",left:"30px"}} type={"file"} onChange={handleUpload}/>
-
+          <input
+            style={{ position: 'relative', top: '80px', left: '30px' }}
+            type={'file'}
+            onChange={handleUpload}
+          />
         </BoxCus>
         <BoxCus width={'60%'}>
           <Grid>
@@ -138,7 +146,6 @@ const AccountSetting = () => {
                 Gender
               </Typography>
               <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
-               
                 Male
               </Typography>
             </TaskList>
@@ -147,7 +154,6 @@ const AccountSetting = () => {
                 Position
               </Typography>
               <Typography sx={{ fontSize: '1.2rem' }} variant="body1">
-                
                 Administrator
               </Typography>
             </TaskList>

@@ -11,7 +11,7 @@ import {
 import { dispatch } from 'src/store';
 import { snackbarList } from 'src/store/slice/snackbar';
 
-const AlertDialog = ({ open, id, setOpen }: any) => {
+const AlertDialog = ({ open, _id, setOpen }: any) => {
   const handleDedete = (id) => {
     dispatch(deleteDepartmentList(id));
     setOpen(false);
@@ -40,7 +40,7 @@ const AlertDialog = ({ open, id, setOpen }: any) => {
         </DialogContent>
         <DialogActions>
           <Button>Cancel</Button>
-          <Button onClick={() => handleDedete(id)} autoFocus>
+          <Button onClick={() => handleDedete(_id)} autoFocus>
             Agree
           </Button>
         </DialogActions>

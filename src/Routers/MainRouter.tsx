@@ -16,23 +16,24 @@ const MainRouter = {
   ),
   children: [
     {
-      path:'/overview',
-      element:<OverView/>
+      path: '/overview',
+      element: <OverView />
     },
     {
       path: '/department',
       element: <Department />
     },
     {
-      path:'/acountSetting',
-      element:<AccountSetting/>
+      path: '/acountSetting',
+      element: <AccountSetting />
     },
     {
-      path:"/questions",
-      element:<QuestionPage/>
-    },{
-      path:'/language',
-      element:<Language/>
+      path: '/questions',
+      element: <QuestionPage />
+    },
+    {
+      path: '/language',
+      element: <Language />
     }
   ]
 };

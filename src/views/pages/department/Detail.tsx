@@ -66,22 +66,22 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
           />
           <TextField
             margin="normal"
-            label={'Status'}
-            value={detail.status ? 'Active' : 'None'}
+            label={'active'}
+            value={detail.active ? 'Active' : 'None'}
             disabled
             sx={{ width: '100%' }}
           />
           <TextField
             margin="normal"
             label={'Created_at'}
-            value={detail.created_at}
+            value={detail.createdAt}
             disabled
             sx={{ width: '100%' }}
           />
           <TextField
             margin="normal"
             label={'Updated_at'}
-            value={detail.updated_at}
+            value={detail.updatedAt}
             disabled
             sx={{ width: '100%' }}
           />

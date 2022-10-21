@@ -20,12 +20,25 @@ const AddQuestion = (props: Props) => {
 
   return (
     <Dialog open={props.open} onClose={handleClose}>
-      <DialogTitle sx={{ fontSize: '1.6rem', ml: 2 ,borderBottom:"2px solid #ccc",width:"94%"}}>Add question</DialogTitle>
+      <DialogTitle
+        sx={{
+          fontSize: '1.6rem',
+          ml: 2,
+          borderBottom: '2px solid #ccc',
+          width: '94%'
+        }}
+      >
+        Add question
+      </DialogTitle>
       <DialogContent>
         <TextField label="Type" margin="normal" sx={{ width: '100%' }} />
         <TextField label="Rank" margin="normal" sx={{ width: '100%' }} />
         <TextField label="Position" margin="normal" sx={{ width: '100%' }} />
-        <TextField label="Queston Content" margin="normal" sx={{ width: '100%' }} />
+        <TextField
+          label="Queston Content"
+          margin="normal"
+          sx={{ width: '100%' }}
+        />
         <TextField label="Anwer" margin="normal" sx={{ width: '100%' }} />
 
         <Button variant="outlined" sx={{ mt: 2, width: '100%' }}>

@@ -4,13 +4,13 @@ import useAuth from 'src/hooks/useAuth';
 
 const GuestGuard = ({ children }) => {
   const { isLoggedIn } = useAuth();
-  
+
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/overview',{replace:true});
+      navigate('/overview', { replace: true });
     }
-  }, [isLoggedIn,navigate]);
+  }, [isLoggedIn, navigate]);
   return children;
 };
 export default GuestGuard;

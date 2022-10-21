@@ -17,9 +17,7 @@ function Footer() {
         justifyContent="space-between"
       >
         <Box>
-          <Typography variant="subtitle1">
-            &copy; 2020 beetsoft vn
-          </Typography>
+          <Typography variant="subtitle1">&copy; 2020 beetsoft vn</Typography>
         </Box>
         <Typography
           sx={{

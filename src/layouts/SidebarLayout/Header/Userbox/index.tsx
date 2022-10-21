@@ -59,12 +59,12 @@ const UserBoxDescription = styled(Typography)(
 
 function HeaderUserbox() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
-  // const user = {
-  //   name: 'Admin',
-  //   avatar: '/static/images/avatars/1.jpg',
-  //   jobtitle: 'Lead'
-  // };
+  // const user = JSON.parse(localStorage.getItem('user'));
+  const user = {
+    name: 'Admin',
+    avatar: '/static/images/avatars/1.jpg',
+    jobtitle: 'Lead'
+  };
 
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -80,7 +80,7 @@ function HeaderUserbox() {
   return (
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
-        <Avatar variant="rounded" alt={user.name} src={user.profile_img} />
+        <Avatar variant="rounded" alt={user.name} src={user.avatar} />
         <Hidden mdDown>
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
@@ -105,11 +105,11 @@ function HeaderUserbox() {
         }}
       >
         <MenuUserBox sx={{ minWidth: 210 }} display="flex">
-          <Avatar variant="rounded" alt={user.name} src={user.profile_img} />
+          <Avatar variant="rounded" alt={user.name} src={user.avatar} />
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              {user.profile_img}
+              {user.avatar}
             </UserBoxDescription>
           </UserBoxText>
         </MenuUserBox>

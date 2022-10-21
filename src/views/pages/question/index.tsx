@@ -20,7 +20,7 @@ const QuestionPage = () => {
             spacing={3}
           >
             <Grid item xs={12}>
-                <QuestionList/>
+              <QuestionList />
             </Grid>
           </Grid>
         </Container>

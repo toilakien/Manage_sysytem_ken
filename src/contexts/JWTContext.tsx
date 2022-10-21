@@ -45,47 +45,40 @@ const initalState: InitialLoginContextProps = {
 };
 
 export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
-  const [state, dispatch] = useReducer(accountReducer,initalState);
-  console.log(state);
-  
+  const [state, dispatch] = useReducer(accountReducer, initalState);
+
   const login = async (
-    account: string,
+    username: string,
     password: string,
     remember_me: boolean
   ) => {
-    try {
-      const resp = await axios.post(`${URL_LOGIN}`, {
-        account,
-        password,
-        remember_me
-      });
-      if (resp) {
-        const { token, user } = resp.data.success;
-        console.log(token);
+    const response = await axios.post(URL_LOGIN, {
+      username,
+      password,
+      remember_me
+    });
+    console.log(response);
 
-        setSession(token);
-        setUser(user);
-        dispatch({
-          type: actionType.LOGIN,
-          payload: {
-            isLoggedIn: true,
-            user
-          }
-        });
-        snackbarList({actions:true,severity:"success",content:"Login success!",color:"green"})
-        
-      }
-      else{
-        snackbarList({actions:true,severity:"error",content:"Login fail!",color:"red"})
+    const { token } = response.data.data;
+    console.log(token);
 
+    setSession(token);
+    dispatch({
+      type: 'LOGIN',
+      payload: {
+        isLoggedIn: true,
       }
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
-  const logout = () => {};
+
+  const logout = () => {
+    setSession(null);
+    setUser(null);
+    dispatch({ type: 'LOGOUT' });
+  };
+
   return (
-    <JWTContext.Provider value={{...state, login, logout }}>
+    <JWTContext.Provider value={{ ...state, login, logout }}>
       {children}
     </JWTContext.Provider>
   );
