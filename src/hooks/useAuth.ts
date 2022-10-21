@@ -4,7 +4,6 @@ import JWTContext from 'src/contexts/JWTContext';
 
 // PROJECT IMPORTS
 
-
 const useAuth = () => {
   const context = useContext(JWTContext);
 

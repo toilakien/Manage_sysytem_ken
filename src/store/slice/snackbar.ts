@@ -2,9 +2,9 @@ import { dispatch } from 'src/store';
 import { createSlice } from '@reduxjs/toolkit';
 interface Payload {
   actions?: boolean;
-  severity?: string|null;
-  content?: string|null;
-  color?: string|null;
+  severity?: string | null;
+  content?: string | null;
+  color?: string | null;
 }
 interface StateProps {
   snackbar: Payload;

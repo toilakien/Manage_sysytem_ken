@@ -9,7 +9,7 @@ import {
   Divider,
   useTheme,
   Button,
-  darken,
+  darken
 } from '@mui/material';
 
 import SidebarMenu from './SidebarMenu';
@@ -43,8 +43,7 @@ function Sidebar() {
           position: 'fixed',
           left: 0,
           top: 0,
-          background:
-            "#1976d2",
+          background: '#1976d2',
           boxShadow:
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
         }}

@@ -17,7 +17,7 @@ import EditButton from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import AlertDialog from './dialog';
 import AddDepartment from './addDepartment';
-import { DEPARTMENT_URL} from 'src/store/slice/department';
+import { DEPARTMENT_URL } from 'src/store/slice/department';
 import axios from 'src/utils/axios';
 import { UserProfile } from 'src/types/login';
 import Detail from './Detail';
@@ -26,40 +26,39 @@ const DepartmentList = ({ department }) => {
   const apiDepartment = [...department];
   const [openD, setOpenD] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [id, setId] = useState<number>(null);
-  const [des, setDes] = useState<string>('');
+  const [_id, setId] = useState<number>(null);
+  const [code, setcode] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [type, setType] = useState<boolean>(false);
-  const [detail,setDetail]=useState<UserProfile>(null);
-  const handleOpen = (id: any) => {
+  const [detail, setDetail] = useState<UserProfile>(null);
+  const handleOpen = (_id: any) => {
     setOpen(true);
-    setId(id);
+    setId(_id);
   };
-  const openFormEdit = (id: any) => {
-    setId(id);
+  const openFormEdit = (_id: any) => {
+    setId(_id);
     setType(true);
-    const e = apiDepartment.find((e) => e.id === id);
-    setDes(e.code);
+    const e = apiDepartment.find((e) => e._id === _id);
+    setcode(e.code);
     setName(e.name);
     setOpen(true);
   };
-  const getDetail=async(id:any)=>{
-    const resp=await axios.get(`${DEPARTMENT_URL.getDetailDepartment(id)}`);
-    setDetail(resp.data.success)
+  const getDetail = async (_id: any) => {
+    const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
+    setDetail(resp.data.success.data);
     setOpenD(true);
-    
-  }
-  const CusButton=styled(Button)({
-    border:"none",
-    outline:"none",
-    color:"#223354",
-    fontWeight:"300",
-    backgroundColor:"none",
-    "&:hover":{
-      color:"red"
+  };
+  const CusButton = styled(Button)({
+    border: 'none',
+    outline: 'none',
+    color: '#223354',
+    fontWeight: '300',
+    backgroundColor: 'none',
+    '&:hover': {
+      color: 'red'
     },
-    cursor:"pointer"
-  })
+    cursor: 'pointer'
+  });
   return (
     <div>
       <TableContainer component={Paper}>
@@ -69,7 +68,7 @@ const DepartmentList = ({ department }) => {
               <TableCell>STT</TableCell>
               <TableCell>Id</TableCell>
               <TableCell align="center">Name</TableCell>
-              <TableCell align="right">Description</TableCell>
+              <TableCell align="right">codecription</TableCell>
               <TableCell align="right">Created At</TableCell>
               <TableCell align="right">Updated At</TableCell>
               <TableCell align="right">Status</TableCell>
@@ -79,30 +78,34 @@ const DepartmentList = ({ department }) => {
           <TableBody>
             {apiDepartment.map((row, index) => (
               <TableRow
-                key={row.id}
+                key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="right">{index}</TableCell>
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="left"><CusButton  onClick={()=>getDetail(row.id)} variant="text">{row.name}</CusButton></TableCell>
+                <TableCell align="right">{row._id}</TableCell>
+                <TableCell align="left">
+                  <CusButton onClick={() => getDetail(row._id)} variant="text">
+                    {row.name}
+                  </CusButton>
+                </TableCell>
                 <TableCell align="right">{row.code}</TableCell>
-                <TableCell align="right">{row.created_at}</TableCell>
-                <TableCell align="right">{row.updated_at}</TableCell>
+                <TableCell align="right">{row.createdAt}</TableCell>
+                <TableCell align="right">{row.updatedAt}</TableCell>
                 <TableCell align="right">
-                  {row.status ? 'Active' : 'no'}
+                  {row.active ? 'Active' : 'no'}
                 </TableCell>
                 <TableCell align="right" sx={{ display: 'flex' }}>
                   <IconButton
                     sx={{ color: 'red' }}
                     aria-label="delete"
-                    onClick={() => handleOpen(row.id)}
+                    onClick={() => handleOpen(row._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                   <IconButton
                     sx={{ color: 'yellow' }}
                     aria-label="edit"
-                    onClick={() => openFormEdit(row.id)}
+                    onClick={() => openFormEdit(row._id)}
                   >
                     <EditButton />
                   </IconButton>
@@ -110,12 +113,19 @@ const DepartmentList = ({ department }) => {
               </TableRow>
             ))}
           </TableBody>
-          <Detail openD={openD} setOpenD={setOpenD} detail={detail}/>
+          <Detail openD={openD} setOpenD={setOpenD} detail={detail} />
         </Table>
         {!type ? (
-          <AlertDialog open={open} id={id} setOpen={setOpen} />
+          <AlertDialog open={open} _id={_id} setOpen={setOpen} />
         ) : (
-          <AddDepartment props={open}  close={setOpen} des={des} name={name} type={type} id={id}/>
+          <AddDepartment
+            props={open}
+            close={setOpen}
+            code={code}
+            name={name}
+            type={type}
+            _id={_id}
+          />
         )}
       </TableContainer>
     </div>

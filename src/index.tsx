@@ -9,11 +9,10 @@ import { SidebarProvider } from 'src/contexts/SidebarContext';
 ReactDOM.render(
   <Provider store={store}>
     <SidebarProvider>
-      <BrowserRouter >
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </SidebarProvider>
   </Provider>,
   document.getElementById('root')
 );
-

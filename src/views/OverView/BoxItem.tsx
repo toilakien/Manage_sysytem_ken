@@ -1,12 +1,12 @@
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 
-interface Props{
-    clBox:string,
-    clBtn:string,
-    number:number|string,
-    question:string
+interface Props {
+  clBox: string;
+  clBtn: string;
+  number: number | string;
+  question: string;
 }
-const BoxItem = (props:Props) => {
+const BoxItem = (props: Props) => {
   return (
     <div className={`box-item ${props.clBox}`}>
       <div className="row">

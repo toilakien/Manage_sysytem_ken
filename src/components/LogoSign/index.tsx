@@ -98,10 +98,7 @@ function Logo() {
   const theme = useTheme();
 
   return (
-    <TooltipWrapper
-      title="kien"
-      arrow
-    >
+    <TooltipWrapper title="kien" arrow>
       <LogoWrapper to="/">
         <Badge
           sx={{

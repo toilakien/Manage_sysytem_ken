@@ -27,7 +27,8 @@
     }
   },
   "rules": {
-    "default-param-last": 0,
+    "default-param-last": "off",
+    "@typescript-eslint/default-param-last": "warn",
     "prettier/prettier": "off",
     "react/jsx-filename-extension": "off",
     "import/no-unresolved": "off",
@@ -67,5 +68,4 @@
     "react/prop-types": ["off"],
     "@typescript-eslint/naming-convention": ["off"]
   }
-  
 }

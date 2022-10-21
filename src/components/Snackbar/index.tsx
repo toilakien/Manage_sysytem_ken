@@ -5,13 +5,18 @@ import Alert from '@mui/material/Alert';
 import { CloseSnackbarList } from 'src/store/slice/snackbar';
 import { styled } from '@mui/material';
 
-export default function CustomizedSnackbars({ actions, severity, content,color }) {
+export default function CustomizedSnackbars({
+  actions,
+  severity,
+  content,
+  color
+}) {
   const handleClose = () => {
     CloseSnackbarList(false);
   };
   const AlertCus = styled(Alert)({
-    backgroundColor:color,
-    color:"#fff"
+    backgroundColor: color,
+    color: '#fff'
   });
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
