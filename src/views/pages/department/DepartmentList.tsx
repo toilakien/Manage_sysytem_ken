@@ -17,13 +17,12 @@ import EditButton from '@mui/icons-material/Edit';
 
 import { useState } from 'react';
 import AlertDialog from './dialog';
-import AddDepartment from './addDepartment';
 import { DEPARTMENT_URL } from 'src/store/slice/department';
 import axios from 'src/utils/axios';
 import { UserProfile } from 'src/types/login';
 import Detail from './Detail';
 
-const DepartmentList = ({ department, setOpen, idNeedCheckForm, setIdNeedCheckForm }: { department: any, setOpen: any, idNeedCheckForm: any, setIdNeedCheckForm: any }) => {
+const DepartmentList = ({ department, setOpen, setIdNeedCheckForm }: { department: any, setOpen: any, setIdNeedCheckForm: any }) => {
   const apiDepartment = [...department];
   const [openD, setOpenD] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);

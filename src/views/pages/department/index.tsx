@@ -46,7 +46,6 @@ const Department = () => {
               <DepartmentList
                 department={department}
                 setOpen={setOpen}
-                idNeedCheckForm={idNeedCheckForm}
                 setIdNeedCheckForm={setIdNeedCheckForm}
               />
               <AddDepartment
