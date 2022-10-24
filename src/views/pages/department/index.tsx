@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Grid } from '@mui/material';
 import HeaderDepartment from './HeaderDepartment';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
@@ -11,13 +11,17 @@ import {
 import { dispatch, useSelector } from 'src/store';
 import Footer from 'src/components/Footer';
 import SfDepartment from './SfDepartment';
+import AddDepartment from './addDepartment';
 
 const Department = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [idNeedCheckForm, setIdNeedCheckForm] = useState<any>(null);
   const department = useSelector((state) => state.department.department); //department []
 
   const getListDepart = async () => {
     await dispatch(getDepartmentList());
   };
+  console.log(idNeedCheckForm);
 
   useEffect(() => {
     getListDepart();
@@ -26,7 +30,7 @@ const Department = () => {
     <div>
       <Container>
         <PageTitleWrapper>
-          <HeaderDepartment />
+          <HeaderDepartment setOpen={setOpen} setIdNeedCheckForm={setIdNeedCheckForm} />
         </PageTitleWrapper>
         <Container maxWidth="lg">
           <SfDepartment />
@@ -39,7 +43,18 @@ const Department = () => {
             spacing={3}
           >
             <Grid item xs={12}>
-              <DepartmentList department={department} />
+              <DepartmentList
+                department={department}
+                setOpen={setOpen}
+                idNeedCheckForm={idNeedCheckForm}
+                setIdNeedCheckForm={setIdNeedCheckForm}
+              />
+              <AddDepartment
+                open={open}
+                setOpen={setOpen}
+                idNeedCheckForm={idNeedCheckForm}
+                setIdNeedCheckForm={setIdNeedCheckForm}
+              />
             </Grid>
           </Grid>
         </Container>

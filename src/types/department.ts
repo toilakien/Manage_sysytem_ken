@@ -32,7 +32,7 @@ export type Department = {
   _id?: string;
   name?: string;
   code?: string;
-  active?: number;
+  active?: string;
   created_at?: string;
   updated_at?: string;
 };

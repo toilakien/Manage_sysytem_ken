@@ -8,7 +8,8 @@ import {
   TableBody,
   IconButton,
   Button,
-  styled
+  styled,
+  Chip
 } from '@mui/material';
 // import apiDepartment from "./data";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,27 +23,21 @@ import axios from 'src/utils/axios';
 import { UserProfile } from 'src/types/login';
 import Detail from './Detail';
 
-const DepartmentList = ({ department }) => {
+const DepartmentList = ({ department, setOpen, idNeedCheckForm, setIdNeedCheckForm }: { department: any, setOpen: any, idNeedCheckForm: any, setIdNeedCheckForm: any }) => {
   const apiDepartment = [...department];
   const [openD, setOpenD] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false);
-  const [_id, setId] = useState<number>(null);
-  const [code, setcode] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const [type, setType] = useState<boolean>(false);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [_id, set_Id] = useState<any>(null);
+
   const [detail, setDetail] = useState<UserProfile>(null);
-  const handleOpen = (_id: any) => {
-    setOpen(true);
-    setId(_id);
-  };
-  const openFormEdit = (_id: any) => {
-    setId(_id);
-    setType(true);
-    const e = apiDepartment.find((e) => e._id === _id);
-    setcode(e.code);
-    setName(e.name);
-    setOpen(true);
-  };
+  const handleOpen = (_id) => {
+    setOpenDialog(true);
+    set_Id(_id)
+  }
+  const openFormEdit = (_id) => {
+    setOpen(true)
+    setIdNeedCheckForm(_id)
+  }
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
     setDetail(resp.data.success.data);
@@ -81,7 +76,7 @@ const DepartmentList = ({ department }) => {
                 key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="right">{index}</TableCell>
+                <TableCell align="right">{index + 1}</TableCell>
                 <TableCell align="right">{row._id}</TableCell>
                 <TableCell align="left">
                   <CusButton onClick={() => getDetail(row._id)} variant="text">
@@ -92,7 +87,11 @@ const DepartmentList = ({ department }) => {
                 <TableCell align="right">{row.createdAt}</TableCell>
                 <TableCell align="right">{row.updatedAt}</TableCell>
                 <TableCell align="right">
-                  {row.active ? 'Active' : 'no'}
+                  {row.active ? (
+                    <Chip label="Active" color="success" />
+                  ) : (
+                    <Chip label="Disable" color="error" />
+                  )}
                 </TableCell>
                 <TableCell align="right" sx={{ display: 'flex' }}>
                   <IconButton
@@ -114,19 +113,8 @@ const DepartmentList = ({ department }) => {
             ))}
           </TableBody>
           <Detail openD={openD} setOpenD={setOpenD} detail={detail} />
+          <AlertDialog open={openDialog} setOpen={setOpenDialog} _id={_id} />
         </Table>
-        {!type ? (
-          <AlertDialog open={open} _id={_id} setOpen={setOpen} />
-        ) : (
-          <AddDepartment
-            props={open}
-            close={setOpen}
-            code={code}
-            name={name}
-            type={type}
-            _id={_id}
-          />
-        )}
       </TableContainer>
     </div>
   );

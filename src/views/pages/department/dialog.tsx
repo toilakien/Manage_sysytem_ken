@@ -12,8 +12,10 @@ import { dispatch } from 'src/store';
 import { snackbarList } from 'src/store/slice/snackbar';
 
 const AlertDialog = ({ open, _id, setOpen }: any) => {
-  const handleDedete = (id) => {
-    dispatch(deleteDepartmentList(id));
+  console.log(_id);
+
+  const handleDedete = (_id) => {
+    dispatch(deleteDepartmentList(_id));
     setOpen(false);
     snackbarList({
       actions: true,

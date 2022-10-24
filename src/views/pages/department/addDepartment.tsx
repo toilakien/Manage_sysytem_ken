@@ -4,6 +4,10 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   TextField
 } from '@mui/material';
 import { useFormik } from 'formik';
@@ -16,16 +20,24 @@ import { snackbarList } from 'src/store/slice/snackbar';
 import { Department } from 'src/types/department';
 import * as yup from 'yup';
 interface Props {
-  props: boolean;
-  close: any;
-  code?: string;
-  name?: string;
-  type?: boolean;
-  _id?: number;
+  open: boolean,
+  setOpen: any,
+  idNeedCheckForm: any,
+  setIdNeedCheckForm: any
 }
-const AddDepartment = (props: Props) => {
+const Status: any = [
+  {
+    value: "true",
+    label: 'true'
+  },
+  {
+    value: "false",
+    label: 'false'
+  }
+];
+const AddDepartment = ({ open, setOpen, idNeedCheckForm, setIdNeedCheckForm }: Props) => {
   const handleClose = () => {
-    props.close(false);
+    setOpen(false);
     formik.handleReset('');
   };
   const validationSchema = yup.object({
@@ -34,13 +46,14 @@ const AddDepartment = (props: Props) => {
   });
   const formik = useFormik({
     initialValues: {
-      name: props.name ? props.name : '',
-      code: props.code ? props.code : ''
+      name: '',
+      code: '',
+      active: ""
     },
     validationSchema,
     onSubmit: (values: Department) => {
-      if (props.type) {
-        dispatch(putDepartmentList({ _id: props._id, params: values }));
+      if (idNeedCheckForm) {
+        dispatch(putDepartmentList({ _id: idNeedCheckForm, params: values }));
       } else {
         dispatch(postDepartmentList(values));
         snackbarList({
@@ -54,7 +67,7 @@ const AddDepartment = (props: Props) => {
     }
   });
   return (
-    <Dialog onClose={handleClose} open={props.props}>
+    <Dialog onClose={handleClose} open={open}>
       <form onSubmit={formik.handleSubmit}>
         <DialogTitle
           sx={{
@@ -63,7 +76,7 @@ const AddDepartment = (props: Props) => {
             borderBottom: '1px solid #ddd'
           }}
         >
-          {props._id ? 'Edit department' : 'Add department'}
+          {idNeedCheckForm ? 'Edit department' : 'Add department'}
         </DialogTitle>
         <DialogContent>
           <TextField
@@ -87,10 +100,28 @@ const AddDepartment = (props: Props) => {
             onBlur={formik.handleBlur}
             error={formik.touched.code && Boolean(formik.errors.code)}
           />
+          <FormControl fullWidth>
+            <InputLabel>Status</InputLabel>
+            <Select
+              id="active"
+              name="active"
+              label="active"
+              displayEmpty
+              value={formik?.values?.active}
+              onChange={formik.handleChange}
+              inputProps={{ 'aria-label': 'Without label' }}
+            >
+              {Status.map((status: any, index: number) => (
+                <MenuItem key={index} value={status.value}>
+                  {status.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button type="submit" variant="outlined">
-            {props._id ? 'Edit ' : 'Add '}
+            {idNeedCheckForm ? 'Edit ' : 'Add '}
           </Button>
           <Button variant="outlined" onClick={handleClose}>
             Cancer

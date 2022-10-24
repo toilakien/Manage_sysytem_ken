@@ -1,13 +1,12 @@
 import { Grid, IconButton, styled, Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import AddDepartment from './addDepartment';
 import React from 'react';
 
-const HeaderDepartment = () => {
+const HeaderDepartment = ({ setOpen, setIdNeedCheckForm }: { setOpen: any, setIdNeedCheckForm: any }) => {
   const handleClick = () => {
     setOpen(true);
+    setIdNeedCheckForm(null)
   };
-  const [open, setOpen] = React.useState<boolean>(false);
   const IconButtonCustom = styled(IconButton)({
     color: 'blue',
     transition: 'color 1s',
@@ -24,7 +23,6 @@ const HeaderDepartment = () => {
       <IconButtonCustom onClick={handleClick}>
         <AddCircleIcon />
       </IconButtonCustom>
-      <AddDepartment props={open} close={setOpen} />
     </Grid>
   );
 };
