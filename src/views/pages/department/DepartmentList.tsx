@@ -86,7 +86,7 @@ const DepartmentList = ({ department, setOpen, setIdNeedCheckForm }: { departmen
                 <TableCell align="right">{row.createdAt}</TableCell>
                 <TableCell align="right">{row.updatedAt}</TableCell>
                 <TableCell align="right">
-                  {row.active ? (
+                  {row.active==="active" ? (
                     <Chip label="Active" color="success" />
                   ) : (
                     <Chip label="Disable" color="error" />

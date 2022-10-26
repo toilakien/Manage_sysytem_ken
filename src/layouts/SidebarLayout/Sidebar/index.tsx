@@ -43,7 +43,7 @@ function Sidebar() {
           position: 'fixed',
           left: 0,
           top: 0,
-          background: '#1976d2',
+          background: '#21686c',
           boxShadow:
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
         }}

@@ -21,8 +21,6 @@ const Department = () => {
   const getListDepart = async () => {
     await dispatch(getDepartmentList());
   };
-  console.log(idNeedCheckForm);
-
   useEffect(() => {
     getListDepart();
   }, [postDepartmentList, deleteDepartmentList]);
@@ -30,10 +28,10 @@ const Department = () => {
     <div>
       <Container>
         <PageTitleWrapper>
-          <HeaderDepartment setOpen={setOpen} setIdNeedCheckForm={setIdNeedCheckForm} />
+          <HeaderDepartment />
         </PageTitleWrapper>
         <Container maxWidth="lg">
-          <SfDepartment />
+          <SfDepartment setOpen={setOpen} setIdNeedCheckForm={setIdNeedCheckForm} />
           <br />
           <Grid
             container

@@ -27,11 +27,11 @@ interface Props {
 }
 const Status: any = [
   {
-    value: "true",
+    value: "active",
     label: 'true'
   },
   {
-    value: "false",
+    value: "disable",
     label: 'false'
   }
 ];
@@ -100,7 +100,7 @@ const AddDepartment = ({ open, setOpen, idNeedCheckForm, setIdNeedCheckForm }: P
             onBlur={formik.handleBlur}
             error={formik.touched.code && Boolean(formik.errors.code)}
           />
-          <FormControl fullWidth>
+          <FormControl fullWidth margin='normal'>
             <InputLabel>Status</InputLabel>
             <Select
               id="active"

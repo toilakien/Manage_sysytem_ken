@@ -12,7 +12,9 @@ export const DEPARTMENT_URL = {
   delDepartment: (id: any) =>
     `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
   getDetailDepartment: (id: string) =>
-    `${process.env.REACT_APP_API_URL}/v1/customer/${id}`
+    `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
+  filterDepartment: (active: any) =>
+    `${process.env.REACT_APP_API_URL}/v1/customer/fil/${active}`
 };
 
 const initialState: DepartmentStateProps = {
@@ -48,10 +50,7 @@ const slice = createSlice({
       });
     },
     filterDepartmentListSuccess(state, action) {
-      const newState = state.department.filter(
-        (e) => e.active == action.payload
-      );
-      state.department = [...newState];
+      state.department = [...action.payload];
     }
   }
 });
@@ -68,7 +67,6 @@ export function getDepartmentList() {
       const resp = await axios.get(`${DEPARTMENT_URL.getDepartmen}`);
       console.log(resp.data.success);
       dispatch(slice.actions.getDepartmentListSuccess(resp.data.success));
-      
     } catch (error) {}
   };
 }
@@ -96,12 +94,26 @@ export function deleteDepartmentList(id: Payload) {
 }
 export function putDepartmentList({ _id, params }: Payload) {
   return async () => {
-    const resp = await axios.put(`${DEPARTMENT_URL.putDepartment(_id)}`, params);
+    const resp = await axios.put(
+      `${DEPARTMENT_URL.putDepartment(_id)}`,
+      params
+    );
     dispatch(slice.actions.putDepartmentSuccess(resp.data.success.data));
   };
 }
 export function filterDepartmentList(active: any) {
   return async () => {
-    await dispatch(slice.actions.filterDepartmentListSuccess(active));
+    if (active !== 'all') {
+      const resp = await axios.get(
+        `${DEPARTMENT_URL.filterDepartment(active)}`
+      );
+      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.data));
+      console.log(resp.data.data);
+    } else if (active === 'all') {
+      const resp = await axios.get(`${DEPARTMENT_URL.getAll}`);
+      dispatch(
+        slice.actions.filterDepartmentListSuccess(resp.data.success.data)
+      );
+    }
   };
 }

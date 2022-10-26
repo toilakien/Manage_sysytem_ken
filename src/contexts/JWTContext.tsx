@@ -59,10 +59,11 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     });
     console.log(response);
 
-    const { token } = response.data.data;
+    const { token, user } = response.data.data;
     console.log(token);
 
     setSession(token);
+    setUser(user);
     dispatch({
       type: 'LOGIN',
       payload: {
