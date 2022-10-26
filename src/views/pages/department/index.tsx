@@ -17,7 +17,7 @@ const Department = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [idNeedCheckForm, setIdNeedCheckForm] = useState<any>(null);
   const department = useSelector((state) => state?.department?.department); //department []
-console.log(department);
+  console.log(department);
 
   const getListDepart = async () => {
     await dispatch(getDepartmentList());

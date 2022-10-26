@@ -29,9 +29,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     getDepartmentListSuccess(state, action) {
-      state.department = action.payload.data;
-      state.pageCount = action.payload.last_page;
-      state.currentPage = action.payload.current_page;
+      state.department = action.payload;
     },
     postDepartmentSuccess(state, action) {
       state.department.unshift(action.payload);
@@ -65,8 +63,8 @@ export function getDepartmentList() {
   return async () => {
     try {
       const resp = await axios.get(`${DEPARTMENT_URL.getDepartmen}`);
-      console.log(resp.data.success);
-      dispatch(slice.actions.getDepartmentListSuccess(resp.data.success));
+
+      dispatch(slice.actions.getDepartmentListSuccess(resp.data.customers));
     } catch (error) {}
   };
 }
@@ -74,7 +72,8 @@ export function postDepartmentList(params: Payload) {
   return async () => {
     try {
       const resp = await axios.post(`${DEPARTMENT_URL.postDepartment}`, params);
-      dispatch(slice.actions.postDepartmentSuccess(resp.data.success.data));
+
+      dispatch(slice.actions.postDepartmentSuccess(resp.data.customers));
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +84,7 @@ export function deleteDepartmentList(id: Payload) {
   return async () => {
     try {
       const resp = await axios.delete(`${DEPARTMENT_URL.delDepartment(id)}`);
-      dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success.data));
+      dispatch(slice.actions.deleteDepartmentSuccess(resp.data.customers));
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +96,8 @@ export function putDepartmentList({ _id, params }: Payload) {
       `${DEPARTMENT_URL.putDepartment(_id)}`,
       params
     );
-    dispatch(slice.actions.putDepartmentSuccess(resp.data.success.data));
+
+    dispatch(slice.actions.putDepartmentSuccess(resp.data.customers));
   };
 }
 export function filterDepartmentList(active: any) {
@@ -106,12 +106,10 @@ export function filterDepartmentList(active: any) {
       const resp = await axios.get(
         `${DEPARTMENT_URL.filterDepartment(active)}`
       );
-      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.data));
+      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.customers));
     } else if (active === 'all') {
       const resp = await axios.get(`${DEPARTMENT_URL.getAll}`);
-      dispatch(
-        slice.actions.filterDepartmentListSuccess(resp.data.success.data)
-      );
+      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.customers));
     }
   };
 }

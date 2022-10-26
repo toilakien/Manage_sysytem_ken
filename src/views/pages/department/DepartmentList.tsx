@@ -44,7 +44,7 @@ const DepartmentList = ({
   const openFormEdit = (_id, name, code, active) => {
     setOpen(true);
     setIdNeedCheckForm(_id);
-    
+
   };
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
@@ -105,14 +105,14 @@ const DepartmentList = ({
                   <IconButton
                     sx={{ color: 'red' }}
                     aria-label="delete"
-                    onClick={() => handleOpen(row._id )}
+                    onClick={() => handleOpen(row._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                   <IconButton
                     sx={{ color: 'yellow' }}
                     aria-label="edit"
-                    onClick={() => openFormEdit(row._id,row.name, row.code, row.active)}
+                    onClick={() => openFormEdit(row._id, row.name, row.code, row.active)}
                   >
                     <EditButton />
                   </IconButton>
