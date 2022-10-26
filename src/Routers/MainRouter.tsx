@@ -4,8 +4,6 @@ import GuestGuard from 'src/utils/auth-guard/GuestGuard';
 import OverView from 'src/views/OverView';
 import AccountSetting from 'src/views/pages/acountSetting';
 import Department from 'src/views/pages/department';
-import Language from 'src/views/pages/language';
-import QuestionPage from 'src/views/pages/question';
 
 const MainRouter = {
   path: '/',
@@ -27,14 +25,7 @@ const MainRouter = {
       path: '/acountSetting',
       element: <AccountSetting />
     },
-    {
-      path: '/questions',
-      element: <QuestionPage />
-    },
-    {
-      path: '/language',
-      element: <Language />
-    }
+    
   ]
 };
 export default MainRouter;

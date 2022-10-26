@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/index';
 import 'nprogress/nprogress.css';
-import App from 'src/App';
+import App from './App';
 import { SidebarProvider } from 'src/contexts/SidebarContext';
 
 ReactDOM.render(
