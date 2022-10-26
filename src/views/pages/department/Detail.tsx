@@ -85,7 +85,6 @@ const Detail = ({ openD, setOpenD, detail }: any) => {
             disabled
             sx={{ width: '100%' }}
           />
-          <ButtonDetails>Save</ButtonDetails>
         </DialogContent>
       ) : (
         <Box></Box>

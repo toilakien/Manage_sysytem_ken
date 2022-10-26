@@ -83,7 +83,7 @@ function Sidebar() {
             size="small"
             fullWidth
           >
-            Upgrade to PRO
+            kienlv@beetsoft.com.vn
           </Button>
         </Box>
       </SidebarWrapper>

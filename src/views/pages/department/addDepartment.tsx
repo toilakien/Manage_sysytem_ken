@@ -49,9 +49,10 @@ const AddDepartment = ({
     // name: yup.string().trim().max(50).required('Name is required'),
     // codecription: yup.string().trim().max(255).required('codecription is required')
   });
+
   const formik = useFormik({
     initialValues: {
-      name: '',
+      name: "",
       code: '',
       active: ''
     },

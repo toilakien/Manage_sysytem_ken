@@ -41,9 +41,10 @@ const DepartmentList = ({
     setOpenDialog(true);
     set_Id(_id);
   };
-  const openFormEdit = (_id) => {
+  const openFormEdit = (_id, name, code, active) => {
     setOpen(true);
     setIdNeedCheckForm(_id);
+    
   };
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
@@ -67,14 +68,14 @@ const DepartmentList = ({
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>STT</TableCell>
-              <TableCell>Id</TableCell>
+              <TableCell align='right'>STT</TableCell>
+              {/* <TableCell>Id</TableCell> */}
               <TableCell align="center">Name</TableCell>
               <TableCell align="right">codecription</TableCell>
               <TableCell align="right">Created At</TableCell>
               <TableCell align="right">Updated At</TableCell>
               <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Ations</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -83,9 +84,9 @@ const DepartmentList = ({
                 key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="right">{index + 1}</TableCell>
-                <TableCell align="right">{row._id}</TableCell>
-                <TableCell align="left">
+                <TableCell align="center">{index + 1}</TableCell>
+                {/* <TableCell align="right">{row._id}</TableCell> */}
+                <TableCell align="right">
                   <CusButton onClick={() => getDetail(row._id)} variant="text">
                     {row.name}
                   </CusButton>
@@ -104,14 +105,14 @@ const DepartmentList = ({
                   <IconButton
                     sx={{ color: 'red' }}
                     aria-label="delete"
-                    onClick={() => handleOpen(row._id)}
+                    onClick={() => handleOpen(row._id )}
                   >
                     <DeleteIcon />
                   </IconButton>
                   <IconButton
                     sx={{ color: 'yellow' }}
                     aria-label="edit"
-                    onClick={() => openFormEdit(row._id)}
+                    onClick={() => openFormEdit(row._id,row.name, row.code, row.active)}
                   >
                     <EditButton />
                   </IconButton>
