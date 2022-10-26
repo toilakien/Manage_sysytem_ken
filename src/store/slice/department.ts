@@ -85,7 +85,6 @@ export function deleteDepartmentList(id: Payload) {
   return async () => {
     try {
       const resp = await axios.delete(`${DEPARTMENT_URL.delDepartment(id)}`);
-
       dispatch(slice.actions.deleteDepartmentSuccess(resp.data.success.data));
     } catch (error) {
       console.log(error);
@@ -108,7 +107,6 @@ export function filterDepartmentList(active: any) {
         `${DEPARTMENT_URL.filterDepartment(active)}`
       );
       dispatch(slice.actions.filterDepartmentListSuccess(resp.data.data));
-      console.log(resp.data.data);
     } else if (active === 'all') {
       const resp = await axios.get(`${DEPARTMENT_URL.getAll}`);
       dispatch(

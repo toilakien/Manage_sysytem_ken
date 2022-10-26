@@ -20,22 +20,27 @@ import { snackbarList } from 'src/store/slice/snackbar';
 import { Department } from 'src/types/department';
 import * as yup from 'yup';
 interface Props {
-  open: boolean,
-  setOpen: any,
-  idNeedCheckForm: any,
-  setIdNeedCheckForm: any
+  open: boolean;
+  setOpen: any;
+  idNeedCheckForm: any;
+  setIdNeedCheckForm: any;
 }
 const Status: any = [
   {
-    value: "active",
+    value: 'active',
     label: 'true'
   },
   {
-    value: "disable",
+    value: 'disable',
     label: 'false'
   }
 ];
-const AddDepartment = ({ open, setOpen, idNeedCheckForm, setIdNeedCheckForm }: Props) => {
+const AddDepartment = ({
+  open,
+  setOpen,
+  idNeedCheckForm,
+  setIdNeedCheckForm
+}: Props) => {
   const handleClose = () => {
     setOpen(false);
     formik.handleReset('');
@@ -48,7 +53,7 @@ const AddDepartment = ({ open, setOpen, idNeedCheckForm, setIdNeedCheckForm }: P
     initialValues: {
       name: '',
       code: '',
-      active: ""
+      active: ''
     },
     validationSchema,
     onSubmit: (values: Department) => {
@@ -100,7 +105,7 @@ const AddDepartment = ({ open, setOpen, idNeedCheckForm, setIdNeedCheckForm }: P
             onBlur={formik.handleBlur}
             error={formik.touched.code && Boolean(formik.errors.code)}
           />
-          <FormControl fullWidth margin='normal'>
+          <FormControl fullWidth margin="normal">
             <InputLabel>Status</InputLabel>
             <Select
               id="active"

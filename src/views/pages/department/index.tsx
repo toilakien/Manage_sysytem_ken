@@ -31,7 +31,10 @@ const Department = () => {
           <HeaderDepartment />
         </PageTitleWrapper>
         <Container maxWidth="lg">
-          <SfDepartment setOpen={setOpen} setIdNeedCheckForm={setIdNeedCheckForm} />
+          <SfDepartment
+            setOpen={setOpen}
+            setIdNeedCheckForm={setIdNeedCheckForm}
+          />
           <br />
           <Grid
             container

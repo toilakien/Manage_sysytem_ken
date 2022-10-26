@@ -1,22 +1,41 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, Grid, IconButton, styled, SelectChangeEvent } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Grid,
+  IconButton,
+  styled,
+  SelectChangeEvent
+} from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useState } from 'react';
 import React from 'react';
-import { filterDepartmentList, getDepartmentList } from "../../../store/slice/department";
+import {
+  filterDepartmentList,
+  getDepartmentList
+} from '../../../store/slice/department';
 import { dispatch } from '../../../store/index';
 
-const SfDepartment = ({ setOpen, setIdNeedCheckForm }: { setOpen: any, setIdNeedCheckForm: any }) => {
+const SfDepartment = ({
+  setOpen,
+  setIdNeedCheckForm
+}: {
+  setOpen: any;
+  setIdNeedCheckForm: any;
+}) => {
   const [active, setActive] = useState<any>(null);
   console.log(active);
 
   React.useEffect(() => {
     if (active) {
-      dispatch(filterDepartmentList(active))
+      dispatch(filterDepartmentList(active));
     }
-  }, [active])
+  }, [active]);
   const handleClick = () => {
     setOpen(true);
-    setIdNeedCheckForm(null)
+    setIdNeedCheckForm(null);
   };
   const handleChange = (event: SelectChangeEvent) => {
     setActive(event.target.value);
@@ -32,16 +51,16 @@ const SfDepartment = ({ setOpen, setIdNeedCheckForm }: { setOpen: any, setIdNeed
   const SfDepartmentWrapper = styled(Grid)({});
   const OptionFilter = [
     {
-      value: "all",
-      label: "All"
+      value: 'all',
+      label: 'All'
     },
     {
       value: 'active',
-      label: "active"
+      label: 'active'
     },
     {
       value: 'disable',
-      label: "disable"
+      label: 'disable'
     }
   ];
   return (
@@ -54,10 +73,10 @@ const SfDepartment = ({ setOpen, setIdNeedCheckForm }: { setOpen: any, setIdNeed
           pb: 3,
           pl: 2,
           borderRadius: '5px',
-          justifyContent: "space-between"
+          justifyContent: 'space-between'
         }}
       >
-        <FormControl sx={{ width: 300, marginRight: "30px" }}>
+        <FormControl sx={{ width: 300, marginRight: '30px' }}>
           <InputLabel>Filter</InputLabel>
           <Select
             id="active"

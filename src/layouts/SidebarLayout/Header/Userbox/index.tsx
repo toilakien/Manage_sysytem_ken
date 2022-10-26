@@ -84,7 +84,9 @@ function HeaderUserbox() {
         <Hidden mdDown>
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.username}</UserBoxLabel>
-            <UserBoxDescription variant="body2">{user.username}</UserBoxDescription>
+            <UserBoxDescription variant="body2">
+              {user.username}
+            </UserBoxDescription>
           </UserBoxText>
         </Hidden>
         <Hidden smDown>

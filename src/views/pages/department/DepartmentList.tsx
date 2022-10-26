@@ -22,7 +22,15 @@ import axios from 'src/utils/axios';
 import { UserProfile } from 'src/types/login';
 import Detail from './Detail';
 
-const DepartmentList = ({ department, setOpen, setIdNeedCheckForm }: { department: any, setOpen: any, setIdNeedCheckForm: any }) => {
+const DepartmentList = ({
+  department,
+  setOpen,
+  setIdNeedCheckForm
+}: {
+  department: any;
+  setOpen: any;
+  setIdNeedCheckForm: any;
+}) => {
   const apiDepartment = [...department];
   const [openD, setOpenD] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -31,12 +39,12 @@ const DepartmentList = ({ department, setOpen, setIdNeedCheckForm }: { departmen
   const [detail, setDetail] = useState<UserProfile>(null);
   const handleOpen = (_id) => {
     setOpenDialog(true);
-    set_Id(_id)
-  }
+    set_Id(_id);
+  };
   const openFormEdit = (_id) => {
-    setOpen(true)
-    setIdNeedCheckForm(_id)
-  }
+    setOpen(true);
+    setIdNeedCheckForm(_id);
+  };
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
     setDetail(resp.data.success.data);
@@ -86,7 +94,7 @@ const DepartmentList = ({ department, setOpen, setIdNeedCheckForm }: { departmen
                 <TableCell align="right">{row.createdAt}</TableCell>
                 <TableCell align="right">{row.updatedAt}</TableCell>
                 <TableCell align="right">
-                  {row.active==="active" ? (
+                  {row.active === 'active' ? (
                     <Chip label="Active" color="success" />
                   ) : (
                     <Chip label="Disable" color="error" />

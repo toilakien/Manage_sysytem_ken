@@ -67,7 +67,7 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     dispatch({
       type: 'LOGIN',
       payload: {
-        isLoggedIn: true,
+        isLoggedIn: true
       }
     });
   };
