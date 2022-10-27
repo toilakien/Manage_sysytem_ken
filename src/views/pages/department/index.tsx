@@ -31,6 +31,7 @@ const Department = () => {
         <PageTitleWrapper>
           <HeaderDepartment />
         </PageTitleWrapper>
+          
         <Container maxWidth="lg">
           <SfDepartment
             setOpen={setOpen}

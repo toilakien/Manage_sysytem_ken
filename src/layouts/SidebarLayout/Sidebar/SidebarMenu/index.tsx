@@ -130,9 +130,9 @@ const SubMenuWrapper = styled(Box)(
                 background: ${theme.colors.alpha.trueWhite[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
-                  'transform',
-                  'opacity'
-                ])};
+    'transform',
+    'opacity'
+  ])};
                 width: 6px;
                 height: 6px;
                 transform: scale(0);
@@ -205,7 +205,7 @@ function SidebarMenu() {
                   to="/department"
                   startIcon={<HotTubIcon />}
                 >
-                  Department
+                  Customers
                 </Button>
               </ListItem>
             </List>
@@ -217,10 +217,10 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/language"
+                  to="/product"
                   startIcon={<GiWaterGallon />}
                 >
-                  Language
+                  Products
                 </Button>
               </ListItem>
             </List>
@@ -232,10 +232,10 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/ranks"
+                  to="/categorys"
                   startIcon={<MilitaryTechIcon />}
                 >
-                  Ranks
+                  Categorys
                 </Button>
               </ListItem>
             </List>
@@ -247,10 +247,10 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/questions"
+                  to="/feedbacks"
                   startIcon={<HelpIcon />}
                 >
-                  Questions
+                  Feedbacks
                 </Button>
               </ListItem>
             </List>

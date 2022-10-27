@@ -46,8 +46,8 @@ const AddDepartment = ({
     formik.handleReset('');
   };
   const validationSchema = yup.object({
-    // name: yup.string().trim().max(50).required('Name is required'),
-    // codecription: yup.string().trim().max(255).required('codecription is required')
+    name: yup.string().trim().max(50).required('Name is required'),
+    code: yup.string().trim().max(255).required('codecription is required')
   });
 
   const formik = useFormik({

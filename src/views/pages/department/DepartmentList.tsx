@@ -48,7 +48,7 @@ const DepartmentList = ({
   };
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
-    setDetail(resp.data.success.data);
+    setDetail(resp.data.customers);
     setOpenD(true);
   };
   const CusButton = styled(Button)({
