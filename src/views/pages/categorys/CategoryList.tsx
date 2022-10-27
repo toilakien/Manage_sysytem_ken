@@ -1,29 +1,10 @@
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Chip, IconButton, Button } from '@mui/material'
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Chip, IconButton } from '@mui/material'
 
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditButton from '@mui/icons-material/Edit';
-const CategoryList = () => {
-    const fakeApiCategry = [
-        {
-            _id: 1,
-            name: "Motorbike",
-            createdAt: "2022-10-26T07:07:50.915Z",
-            updatedAt: "2022-10-26T07:07:50.915Z",
-        },
-        {
-            _id: 2,
-            name: "Motorbike",
-            createdAt: "2022-10-26T07:07:50.915Z",
-            updatedAt: "2022-10-26T07:07:50.915Z",
-        },
-        {
-            _id: 3,
-            name: "Motorbike",
-            createdAt: "2022-10-26T07:07:50.915Z",
-            updatedAt: "2022-10-26T07:07:50.915Z",
-        },
-    ]
+const CategoryList = ({ category }: { category: any }) => {
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -37,7 +18,7 @@ const CategoryList = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {fakeApiCategry.map((row, index) => (
+                    {category?.map((row, index) => (
                         <TableRow
                             key={row._id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

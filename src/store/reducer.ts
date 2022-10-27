@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import departmentReducer from '../store/slice/department';
-import questionReducer from './slice/question';
 import snackbarReducer from './slice/snackbar';
-import languageReducer from './slice/language';
+import categoryReducer from './slice/category';
 const rootReducer = combineReducers({
   department: departmentReducer,
-  question: questionReducer,
   snackbar: snackbarReducer,
-  language: languageReducer
+  category: categoryReducer
 });
 export default rootReducer;
