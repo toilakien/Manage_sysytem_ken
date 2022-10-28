@@ -35,7 +35,12 @@ const slice = createSlice({
       state.pageCount = action.payload.pageCount;
     },
     postDepartmentSuccess(state, action) {
-      state.department.unshift(action.payload);
+      console.log("state",state);
+      console.log("action",action.payload);
+      
+      state.department.unshift(action.payload.customers);
+      state.currentPage = action.payload.currentPage;
+      state.pageCount = action.payload.pageCount;
     },
     deleteDepartmentSuccess(state, action) {
       state.department = state.department.filter(
@@ -76,8 +81,9 @@ export function postDepartmentList(params: Payload) {
   return async () => {
     try {
       const resp = await axios.post(`${DEPARTMENT_URL.postDepartment}`, params);
+      
+      dispatch(slice.actions.postDepartmentSuccess(resp.data));
 
-      dispatch(slice.actions.postDepartmentSuccess(resp.data.customers));
     } catch (error) {
       console.log(error);
     }

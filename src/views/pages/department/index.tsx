@@ -54,12 +54,14 @@ const Department = () => {
           >
             <Grid item xs={12}>
               <DepartmentList
+              currentPage={currentPage}
                 department={department}
                 setOpen={setOpen}
                 setIdNeedCheckForm={setIdNeedCheckForm}
               />
               <PaginationPage setPage={setPage} currentPage={currentPage} pageCount={pageCount} />
               <AddDepartment
+              getListDepart={getListDepart}
                 open={open}
                 setOpen={setOpen}
                 idNeedCheckForm={idNeedCheckForm}

@@ -23,10 +23,12 @@ import { UserProfile } from 'src/types/login';
 import Detail from './Detail';
 
 const DepartmentList = ({
+  currentPage,
   department,
   setOpen,
   setIdNeedCheckForm
 }: {
+  currentPage:any,
   department: any;
   setOpen: any;
   setIdNeedCheckForm: any;
@@ -81,21 +83,21 @@ const DepartmentList = ({
           <TableBody>
             {apiDepartment.map((row, index) => (
               <TableRow
-                key={row._id}
+                key={row?._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="center">{index + 1}</TableCell>
+                <TableCell align="center">{index + 5 * (currentPage - 1) + 1}</TableCell>
                 {/* <TableCell align="right">{row._id}</TableCell> */}
                 <TableCell align="right">
                   <CusButton onClick={() => getDetail(row._id)} variant="text">
-                    {row.name}
+                    {row?.name}
                   </CusButton>
                 </TableCell>
-                <TableCell align="right">{row.code}</TableCell>
-                <TableCell align="right">{row.createdAt}</TableCell>
-                <TableCell align="right">{row.updatedAt}</TableCell>
+                <TableCell align="right">{row?.code}</TableCell>
+                <TableCell align="right">{row?.createdAt}</TableCell>
+                <TableCell align="right">{row?.updatedAt}</TableCell>
                 <TableCell align="right">
-                  {row.active === 'active' ? (
+                  {row?.active === 'active' ? (
                     <Chip label="Active" color="success" />
                   ) : (
                     <Chip label="Disable" color="error" />
@@ -105,14 +107,14 @@ const DepartmentList = ({
                   <IconButton
                     sx={{ color: 'red' }}
                     aria-label="delete"
-                    onClick={() => handleOpen(row._id)}
+                    onClick={() => handleOpen(row?._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                   <IconButton
                     sx={{ color: 'yellow' }}
                     aria-label="edit"
-                    onClick={() => openFormEdit(row._id, row.name, row.code, row.active)}
+                    onClick={() => openFormEdit(row?._id, row?.name, row?.code, row?.active)}
                   >
                     <EditButton />
                   </IconButton>
