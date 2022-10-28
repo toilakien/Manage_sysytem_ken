@@ -12,26 +12,33 @@ import { dispatch, useSelector } from 'src/store';
 import Footer from 'src/components/Footer';
 import SfDepartment from './SfDepartment';
 import AddDepartment from './addDepartment';
+import PaginationPage from './pagination';
 
 const Department = () => {
+  const [page, setPage] = useState<any>(1)
   const [open, setOpen] = useState<boolean>(false);
   const [idNeedCheckForm, setIdNeedCheckForm] = useState<any>(null);
   const department = useSelector((state) => state?.department?.department); //department []
+  const currentPage = useSelector((state) => state?.department?.currentPage); //department []
+  const pageCount = useSelector((state) => state?.department?.pageCount); //department []
+  console.log("currentPage", currentPage);
+  console.log("pageCount", pageCount);
+
   console.log(department);
 
   const getListDepart = async () => {
-    await dispatch(getDepartmentList());
+    await dispatch(getDepartmentList(page));
   };
   useEffect(() => {
     getListDepart();
-  }, [postDepartmentList, deleteDepartmentList]);
+  }, [postDepartmentList, deleteDepartmentList, page]);
   return (
     <div>
       <Container>
         <PageTitleWrapper>
           <HeaderDepartment />
         </PageTitleWrapper>
-          
+
         <Container maxWidth="lg">
           <SfDepartment
             setOpen={setOpen}
@@ -51,6 +58,7 @@ const Department = () => {
                 setOpen={setOpen}
                 setIdNeedCheckForm={setIdNeedCheckForm}
               />
+              <PaginationPage setPage={setPage} currentPage={currentPage} pageCount={pageCount} />
               <AddDepartment
                 open={open}
                 setOpen={setOpen}

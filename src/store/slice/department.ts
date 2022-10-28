@@ -4,7 +4,8 @@ import { DepartmentStateProps, Payload } from 'src/types/department';
 import { dispatch } from '..';
 
 export const DEPARTMENT_URL = {
-  getDepartmen: `${process.env.REACT_APP_API_URL}/v1/customer`,
+  getDepartmen: (page: number) =>
+    `${process.env.REACT_APP_API_URL}/v1/customer/${page}`,
   getAll: `${process.env.REACT_APP_API_URL}/v1/customer`,
   postDepartment: `${process.env.REACT_APP_API_URL}/v1/customer`,
   putDepartment: (id: any) =>
@@ -29,7 +30,9 @@ const slice = createSlice({
   initialState,
   reducers: {
     getDepartmentListSuccess(state, action) {
-      state.department = action.payload;
+      state.department = action.payload.customers;
+      state.currentPage = action.payload.currentPage;
+      state.pageCount = action.payload.pageCount;
     },
     postDepartmentSuccess(state, action) {
       state.department.unshift(action.payload);
@@ -59,12 +62,13 @@ export const {
   deleteDepartmentSuccess
 } = slice.actions;
 
-export function getDepartmentList() {
+export function getDepartmentList(page: any) {
   return async () => {
     try {
-      const resp = await axios.get(`${DEPARTMENT_URL.getDepartmen}`);
+      const resp = await axios.get(`${DEPARTMENT_URL.getDepartmen(page)}`);
+      console.log(resp.data);
 
-      dispatch(slice.actions.getDepartmentListSuccess(resp.data.customers));
+      dispatch(slice.actions.getDepartmentListSuccess(resp.data));
     } catch (error) {}
   };
 }
