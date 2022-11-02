@@ -14,7 +14,7 @@ export const DEPARTMENT_URL = {
     `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
   getDetailDepartment: (id: string) =>
     `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
-  filterDepartment: (active: any) =>
+  filterDepartment: (active: any) =>    
     `${process.env.REACT_APP_API_URL}/v1/customer/fil/${active}`
 };
 
@@ -35,9 +35,9 @@ const slice = createSlice({
       state.pageCount = action.payload.pageCount;
     },
     postDepartmentSuccess(state, action) {
-      console.log("state",state);
-      console.log("action",action.payload);
-      
+      console.log('state', state);
+      console.log('action', action.payload);
+
       state.department.unshift(action.payload.customers);
       state.currentPage = action.payload.currentPage;
       state.pageCount = action.payload.pageCount;
@@ -56,7 +56,9 @@ const slice = createSlice({
       });
     },
     filterDepartmentListSuccess(state, action) {
-      state.department = [...action.payload];
+      state.department = action.payload.customers;
+      state.currentPage = action.payload.currentPage;
+      state.pageCount = action.payload.pageCount;
     }
   }
 });
@@ -81,9 +83,8 @@ export function postDepartmentList(params: Payload) {
   return async () => {
     try {
       const resp = await axios.post(`${DEPARTMENT_URL.postDepartment}`, params);
-      
-      dispatch(slice.actions.postDepartmentSuccess(resp.data));
 
+      dispatch(slice.actions.postDepartmentSuccess(resp.data));
     } catch (error) {
       console.log(error);
     }
@@ -116,10 +117,10 @@ export function filterDepartmentList(active: any) {
       const resp = await axios.get(
         `${DEPARTMENT_URL.filterDepartment(active)}`
       );
-      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.customers));
+      dispatch(slice.actions.filterDepartmentListSuccess(resp.data));
     } else if (active === 'all') {
       const resp = await axios.get(`${DEPARTMENT_URL.getAll}`);
-      dispatch(slice.actions.filterDepartmentListSuccess(resp.data.customers));
+      dispatch(slice.actions.filterDepartmentListSuccess(resp.data));
     }
   };
 }
