@@ -83,7 +83,6 @@ export function postDepartmentList(params: Payload) {
   return async () => {
     try {
       const resp = await axios.post(`${DEPARTMENT_URL.postDepartment}`, params);
-
       dispatch(slice.actions.postDepartmentSuccess(resp.data));
     } catch (error) {
       console.log(error);

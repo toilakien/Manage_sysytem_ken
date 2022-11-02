@@ -5,6 +5,7 @@ import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import DepartmentList from './DepartmentList';
 import {
   deleteDepartmentList,
+  filterDepartmentList,
   getDepartmentList,
   postDepartmentList
 } from 'src/store/slice/department';
@@ -31,7 +32,7 @@ const Department = () => {
   };
   useEffect(() => {
     getListDepart();
-  }, [postDepartmentList, deleteDepartmentList, page]);
+  }, [postDepartmentList, deleteDepartmentList, filterDepartmentList,page]);
   return (
     <div>
       <Container>
