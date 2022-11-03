@@ -25,7 +25,7 @@ const SfDepartment = ({
   setOpen: any;
   setIdNeedCheckForm: any;
 }) => {
-  const [active, setActive] = useState<any>("");
+  const [active, setActive] = useState<any>('');
   console.log(active);
 
   React.useEffect(() => {
@@ -48,7 +48,6 @@ const SfDepartment = ({
       transform: 'scale(1.1)'
     }
   });
-  const SfDepartmentWrapper = styled(Grid)({});
   const OptionFilter = [
     {
       value: 'all',
@@ -64,40 +63,33 @@ const SfDepartment = ({
     }
   ];
   return (
-    <SfDepartmentWrapper>
-      <Box
-        sx={{
-          display: 'flex',
-          backgroundColor: '#fff',
-          pt: 3,
-          pb: 3,
-          pl: 2,
-          borderRadius: '5px',
-          justifyContent: 'space-between'
-        }}
-      >
-        <FormControl sx={{ width: 300, marginRight: '30px' }}>
-          <InputLabel>Filter</InputLabel>
-          <Select
-            id="active"
-            name="active"
-            label="active"
-            inputProps={{ 'aria-label': 'Without label' }}
-            onChange={handleChange}
-            value={active}
-          >
-            {OptionFilter.map((o: any, index: number) => (
-              <MenuItem key={index} value={o.value}>
-                {o.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <IconButtonCustom onClick={handleClick}>
-          <AddCircleIcon />
-        </IconButtonCustom>
-      </Box>
-    </SfDepartmentWrapper>
+    <Grid
+      sx={{ p: 2, backgroundColor: '#fafafa' }}
+      container
+      justifyContent={'space-between'}
+    >
+      <FormControl sx={{ width: 300, marginRight: '30px' }}>
+        <InputLabel style={{ top: '-10px' }}>Filter</InputLabel>
+        <Select
+          id="active"
+          name="active"
+          label="active"
+          inputProps={{ 'aria-label': 'Without label' }}
+          onChange={handleChange}
+          value={active}
+          sx={{ height: '30px' }}
+        >
+          {OptionFilter.map((o: any, index: number) => (
+            <MenuItem key={index} value={o.value}>
+              {o.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <IconButtonCustom onClick={handleClick}>
+        <AddCircleIcon />
+      </IconButtonCustom>
+    </Grid>
   );
 };
 

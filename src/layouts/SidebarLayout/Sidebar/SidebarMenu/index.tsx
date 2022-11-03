@@ -232,6 +232,21 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
+                  to="/administrator"
+                  startIcon={<GiWaterGallon />}
+                >
+                  Administrator
+                </Button>
+              </ListItem>
+            </List>
+          </SubMenuWrapper>
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  onClick={closeSidebar}
                   to="/categorys"
                   startIcon={<MilitaryTechIcon />}
                 >

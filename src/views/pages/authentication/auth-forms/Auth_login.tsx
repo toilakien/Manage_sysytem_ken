@@ -7,11 +7,11 @@ import {
   Grid,
   Typography
 } from '@mui/material';
-import Link from '@mui/material/Link';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import useAuth from 'src/hooks/useAuth';
 import { snackbarList } from 'src/store/slice/snackbar';
+import { Link } from 'react-router-dom';
 const Auth_login = () => {
   const { login } = useAuth();
 
@@ -87,12 +87,12 @@ const Auth_login = () => {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <Link to="#" >
               Forgot password?
             </Link>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <Link to="/register" >
               {"Don't have an account? Sign Up"}
             </Link>
           </Grid>

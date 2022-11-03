@@ -32,15 +32,12 @@ const Department = () => {
   };
   useEffect(() => {
     getListDepart();
-  }, [postDepartmentList, deleteDepartmentList, filterDepartmentList,page]);
+  }, [postDepartmentList, deleteDepartmentList, filterDepartmentList, page]);
   return (
     <div>
-      <Container>
-        <PageTitleWrapper>
-          <HeaderDepartment />
-        </PageTitleWrapper>
-
-        <Container maxWidth="lg">
+      <Grid>
+        <HeaderDepartment />
+        <Grid sx={{ p: 2 }}>
           <SfDepartment
             setOpen={setOpen}
             setIdNeedCheckForm={setIdNeedCheckForm}
@@ -55,14 +52,14 @@ const Department = () => {
           >
             <Grid item xs={12}>
               <DepartmentList
-              currentPage={currentPage}
+                currentPage={currentPage}
                 department={department}
                 setOpen={setOpen}
                 setIdNeedCheckForm={setIdNeedCheckForm}
               />
               <PaginationPage setPage={setPage} currentPage={currentPage} pageCount={pageCount} />
               <AddDepartment
-              getListDepart={getListDepart}
+                getListDepart={getListDepart}
                 open={open}
                 setOpen={setOpen}
                 idNeedCheckForm={idNeedCheckForm}
@@ -70,8 +67,8 @@ const Department = () => {
               />
             </Grid>
           </Grid>
-        </Container>
-      </Container>
+        </Grid>
+      </Grid>
       <Footer />
     </div>
   );

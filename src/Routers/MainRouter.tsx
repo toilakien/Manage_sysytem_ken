@@ -6,6 +6,7 @@ import Department from 'src/views/pages/department';
 import Product from 'src/views/pages/products';
 import Categorys from 'src/views/pages/categorys';
 import Feedbacks from 'src/views/pages/feedbacks';
+import Administrator from 'src/views/pages/administrator';
 
 const MainRouter = {
   path: '/',
@@ -30,6 +31,10 @@ const MainRouter = {
     {
       path: '/product',
       element: <Product />
+    },
+    {
+      path: '/administrator',
+      element: <Administrator />
     },
     {
       path: '/feedbacks',
