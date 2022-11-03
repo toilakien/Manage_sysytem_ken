@@ -12,7 +12,7 @@ import { dispatch, useSelector } from 'src/store';
 import Footer from 'src/components/Footer';
 import SfDepartment from './SfDepartment';
 import AddDepartment from './addDepartment';
-import PaginationPage from 'src/components/pa/pagination';
+import PaginationPage from 'src/components/Pagination/pagination';
 
 const Department = () => {
   const [page, setPage] = useState<any>(1);

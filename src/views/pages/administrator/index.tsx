@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import PaginationPage from 'src/components/pa/pagination';
+import PaginationPage from 'src/components/Pagination/pagination';
 import { dispatch, useSelector } from 'src/store';
 import {
   deleteadministratorList,
