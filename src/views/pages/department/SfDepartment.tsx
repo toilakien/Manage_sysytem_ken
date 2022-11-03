@@ -64,9 +64,10 @@ const SfDepartment = ({
   ];
   return (
     <Grid
-      sx={{ p: 2, backgroundColor: '#fafafa' }}
+      sx={{ p: 1, backgroundColor: '#fafafa' }}
       container
       justifyContent={'space-between'}
+      alignItems="center"
     >
       <FormControl sx={{ width: 300, marginRight: '30px' }}>
         <InputLabel style={{ top: '-10px' }}>Filter</InputLabel>
