@@ -43,7 +43,7 @@ const MainRouter = {
     {
       path: '/categorys',
       element: <Categorys />
-    },
+    }
   ]
 };
 export default MainRouter;

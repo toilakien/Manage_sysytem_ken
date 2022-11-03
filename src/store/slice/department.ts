@@ -14,7 +14,7 @@ export const DEPARTMENT_URL = {
     `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
   getDetailDepartment: (id: string) =>
     `${process.env.REACT_APP_API_URL}/v1/customer/${id}`,
-  filterDepartment: (active: any) =>    
+  filterDepartment: (active: any) =>
     `${process.env.REACT_APP_API_URL}/v1/customer/fil/${active}`
 };
 

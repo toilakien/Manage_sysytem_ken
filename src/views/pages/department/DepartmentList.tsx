@@ -28,7 +28,7 @@ const DepartmentList = ({
   setOpen,
   setIdNeedCheckForm
 }: {
-  currentPage:any,
+  currentPage: any;
   department: any;
   setOpen: any;
   setIdNeedCheckForm: any;
@@ -46,7 +46,6 @@ const DepartmentList = ({
   const openFormEdit = (_id, name, code, active) => {
     setOpen(true);
     setIdNeedCheckForm(_id);
-
   };
   const getDetail = async (_id: any) => {
     const resp = await axios.get(`${DEPARTMENT_URL.getDetailDepartment(_id)}`);
@@ -70,7 +69,7 @@ const DepartmentList = ({
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align='right'>STT</TableCell>
+              <TableCell align="right">STT</TableCell>
               {/* <TableCell>Id</TableCell> */}
               <TableCell align="center">Name</TableCell>
               <TableCell align="right">codecription</TableCell>
@@ -86,7 +85,9 @@ const DepartmentList = ({
                 key={row?._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="center">{index + 5 * (currentPage - 1) + 1}</TableCell>
+                <TableCell align="center">
+                  {index + 5 * (currentPage - 1) + 1}
+                </TableCell>
                 {/* <TableCell align="right">{row._id}</TableCell> */}
                 <TableCell align="right">
                   <CusButton onClick={() => getDetail(row._id)} variant="text">
@@ -114,7 +115,9 @@ const DepartmentList = ({
                   <IconButton
                     sx={{ color: 'yellow' }}
                     aria-label="edit"
-                    onClick={() => openFormEdit(row?._id, row?.name, row?.code, row?.active)}
+                    onClick={() =>
+                      openFormEdit(row?._id, row?.name, row?.code, row?.active)
+                    }
                   >
                     <EditButton />
                   </IconButton>

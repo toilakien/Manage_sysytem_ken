@@ -16,14 +16,14 @@ import AddDepartment from './addDepartment';
 import PaginationPage from './pagination';
 
 const Department = () => {
-  const [page, setPage] = useState<any>(1)
+  const [page, setPage] = useState<any>(1);
   const [open, setOpen] = useState<boolean>(false);
   const [idNeedCheckForm, setIdNeedCheckForm] = useState<any>(null);
   const department = useSelector((state) => state?.department?.department); //department []
   const currentPage = useSelector((state) => state?.department?.currentPage); //department []
   const pageCount = useSelector((state) => state?.department?.pageCount); //department []
-  console.log("currentPage", currentPage);
-  console.log("pageCount", pageCount);
+  console.log('currentPage', currentPage);
+  console.log('pageCount', pageCount);
 
   console.log(department);
 
@@ -56,7 +56,11 @@ const Department = () => {
                 setOpen={setOpen}
                 setIdNeedCheckForm={setIdNeedCheckForm}
               />
-              <PaginationPage setPage={setPage} currentPage={currentPage} pageCount={pageCount} />
+              <PaginationPage
+                setPage={setPage}
+                currentPage={currentPage}
+                pageCount={pageCount}
+              />
               <AddDepartment
                 getListDepart={getListDepart}
                 open={open}
