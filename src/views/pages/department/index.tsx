@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Grid } from '@mui/material';
+import {Grid } from '@mui/material';
 import HeaderDepartment from './HeaderDepartment';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import DepartmentList from './DepartmentList';
 import {
   deleteDepartmentList,
@@ -13,7 +12,7 @@ import { dispatch, useSelector } from 'src/store';
 import Footer from 'src/components/Footer';
 import SfDepartment from './SfDepartment';
 import AddDepartment from './addDepartment';
-import PaginationPage from './pagination';
+import PaginationPage from 'src/components/pa/pagination';
 
 const Department = () => {
   const [page, setPage] = useState<any>(1);
@@ -58,11 +57,9 @@ const Department = () => {
                 pageCount={pageCount}
               />
               <AddDepartment
-                getListDepart={getListDepart}
                 open={open}
                 setOpen={setOpen}
                 idNeedCheckForm={idNeedCheckForm}
-                setIdNeedCheckForm={setIdNeedCheckForm}
               />
             </Grid>
           </Grid>

@@ -1,5 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import PaginationPage from 'src/components/pa/pagination';
 import { dispatch, useSelector } from 'src/store';
 import {
   deleteadministratorList,
@@ -7,7 +8,6 @@ import {
   postadministratorList
 } from 'src/store/slice/administrator';
 import AdministratorList from './AdministratorList';
-import PaginationPage from './pagination';
 import ToolAdministrator from './ToolAdministrator';
 
 const Administrator = () => {

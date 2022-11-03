@@ -24,8 +24,8 @@ interface Props {
   open: boolean;
   setOpen: any;
   idNeedCheckForm: any;
-  setIdNeedCheckForm: any;
-  getListDepart: any;
+
+
 }
 const Status: any = [
   {
@@ -38,11 +38,11 @@ const Status: any = [
   }
 ];
 const AddDepartment = ({
-  getListDepart,
+
   open,
   setOpen,
   idNeedCheckForm,
-  setIdNeedCheckForm
+
 }: Props) => {
   const handleClose = () => {
     setOpen(false);
