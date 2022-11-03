@@ -35,9 +35,6 @@ const slice = createSlice({
       state.pageCount = action.payload.pageCount;
     },
     postDepartmentSuccess(state, action) {
-      console.log('state', state);
-      console.log('action', action.payload);
-
       state.department.unshift(action.payload.customers);
       state.currentPage = action.payload.currentPage;
       state.pageCount = action.payload.pageCount;

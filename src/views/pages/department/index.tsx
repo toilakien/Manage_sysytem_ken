@@ -22,10 +22,6 @@ const Department = () => {
   const department = useSelector((state) => state?.department?.department); //department []
   const currentPage = useSelector((state) => state?.department?.currentPage); //department []
   const pageCount = useSelector((state) => state?.department?.pageCount); //department []
-  console.log('currentPage', currentPage);
-  console.log('pageCount', pageCount);
-
-  console.log(department);
 
   const getListDepart = async () => {
     await dispatch(getDepartmentList(page));

@@ -26,7 +26,6 @@ const SfDepartment = ({
   setIdNeedCheckForm: any;
 }) => {
   const [active, setActive] = useState<any>('');
-  console.log(active);
 
   React.useEffect(() => {
     if (active) {

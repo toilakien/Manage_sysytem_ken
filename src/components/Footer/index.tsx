@@ -27,7 +27,7 @@ function Footer() {
         >
           Crafted by{' '}
           <Link
-            href="https://bloomui.com"
+            href="https://lucent-fairy-59abf6.netlify.app"
             target="_blank"
             rel="noopener noreferrer"
           >
