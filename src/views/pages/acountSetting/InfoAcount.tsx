@@ -22,10 +22,6 @@ const InfoAcount = () => {
             name: 'email'
         },
         {
-            label: 'Password',
-            name: 'password'
-        },
-        {
             label: 'Text Editor Mode',
             name: 'tem'
         }
@@ -88,6 +84,20 @@ const InfoAcount = () => {
                     </Grid>
                 );
             })}
+            <Grid container sx={{ p: 2 }}>
+                <Grid
+                    xs={4}
+                    container
+                    justifyContent={'end'}
+                    alignItems={'center'}
+                    sx={{ pr: 5 }}
+                >
+                    <Typography>Password</Typography>
+                </Grid>
+                <Grid container xs={8}>
+                    <Button>Change Password</Button>
+                </Grid>
+            </Grid>
             <Grid container justifyContent={'end'} sx={{ p: 2 }}>
                 <Button variant="outlined">
                     Cancel
