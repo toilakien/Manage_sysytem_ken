@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 //
 import Auth_login from '../auth-forms/Auth_login';
 import bgrImage from 'src/imageLayout.jpg';
+import logo from 'src/logo.png';
 export default function Login() {
   return (
     <Grid
@@ -16,9 +17,9 @@ export default function Login() {
         width: '100%',
         height: '100vh',
         bgcolor: '#ccc',
-        backgroundImage:`url(${bgrImage})`,
-        backgroundRepeat:"no-repeat",
-        backgroundSize:"100%"
+        backgroundImage: `url(${bgrImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100%"
 
       }}
     >
@@ -28,31 +29,28 @@ export default function Login() {
         sx={{
           borderRadius: '10px',
           bgcolor: '#f5f5f5',
-          opacity:"0.8",
+          opacity: "0.8",
           border: '1px solid #ddd',
           position: 'relative',
-          top: 100,
+          top: 130,
           pb: 5
         }}
       >
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-            <NordicWalkingIcon />
-          </Avatar>
-          <Typography component="h1" variant="h3">
-            Sign in
-          </Typography>
-          {/* Auth login import  */}
-          <Auth_login />
-        </Box>
+
+        <Grid sx={{ mt:2 }}>
+          <Grid container justifyContent={"center"}>
+            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }} src={logo} />
+          </Grid>
+          <Grid container justifyContent={"center"}>
+            <Typography component="h1" variant="h3">
+              Đăng nhập
+            </Typography>
+          </Grid>
+        </Grid>
+        {/* Auth login import  */}
+        <Auth_login />
+
       </Container>
     </Grid>
   );
