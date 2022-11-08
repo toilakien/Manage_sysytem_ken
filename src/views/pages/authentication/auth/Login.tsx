@@ -8,14 +8,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 //
 import Auth_login from '../auth-forms/Auth_login';
-
+import bgrImage from 'src/imageLayout.jpg';
 export default function Login() {
   return (
     <Grid
       sx={{
         width: '100%',
         height: '100vh',
-        bgcolor: '#8FC2C2'
+        bgcolor: '#ccc',
+        backgroundImage:`url(${bgrImage})`,
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"100%"
+
       }}
     >
       <Container
@@ -23,7 +27,8 @@ export default function Login() {
         maxWidth="xs"
         sx={{
           borderRadius: '10px',
-          bgcolor: '#fff',
+          bgcolor: '#f5f5f5',
+          opacity:"0.8",
           border: '1px solid #ddd',
           position: 'relative',
           top: 100,
