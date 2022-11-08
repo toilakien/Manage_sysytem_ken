@@ -11,7 +11,7 @@ const initalState: InitialLoginContextProps = {
 };
 const accountReducer = (
   state = initalState,
-  action: AccountReducerActionProps
+  action: AccountReducerActionProps,
 ) => {
   switch (action.type) {
     case actionType.LOGIN: {
