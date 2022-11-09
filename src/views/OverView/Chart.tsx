@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
+import { Label, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 // Generate Sales Data
 function createData(time: string, amount?: number) {
