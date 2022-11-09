@@ -60,11 +60,6 @@ const UserBoxDescription = styled(Typography)(
 function HeaderUserbox() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
-  // const user = {
-  //   name: 'Admin',
-  //   avatar: '/static/images/avatars/1.jpg',
-  //   jobtitle: 'Lead'
-  // };
 
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);

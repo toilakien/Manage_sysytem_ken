@@ -16,7 +16,7 @@ export default function PaginationPage({
     setPage(value);
   };
   return (
-    <Grid container justifyContent={'center'}>
+    <Grid container justifyContent={'center'} sx={{ mt: 1 }}>
       <Stack padding={2}>
         <Pagination
           count={pageCount}

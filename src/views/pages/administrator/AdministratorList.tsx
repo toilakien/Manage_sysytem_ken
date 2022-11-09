@@ -13,8 +13,8 @@ import React from 'react';
 
 const AdministratorList = ({ state }: { state: any }) => {
   return (
-    <Grid>
-      <TableContainer component={Paper}>
+    <Grid sx={{ mt: 1 }}>
+      <TableContainer component={Paper} >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
