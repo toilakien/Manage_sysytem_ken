@@ -83,7 +83,7 @@ function Sidebar() {
             size="small"
             fullWidth
           >
-            kienlv@beetsoft.com.vn
+            kien
           </Button>
         </Box>
       </SidebarWrapper>
